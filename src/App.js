@@ -1,13 +1,21 @@
-import React from "react";
-import Header from "./Components/Header";
+import React, { useEffect, useRef } from "react";
+import Header from "./Components/Header.jsx";
 import "./styles/main.scss";
-import Landing from "./Pages/Landing";
+import Landing from "./Pages/Landing.jsx";
+import { TweenMax } from "gsap";
+import { Switch, Route } from "react-router-dom";
 
 function App() {
+  let app = useRef(null);
+  useEffect(() => {
+    TweenMax.to(app, 0, { css: { visibility: "visible" } });
+  });
   return (
-    <div className="App">
+    <div className="App" ref={(el) => (app = el)}>
       <Header />
-      <Landing />
+      <Switch>
+        <Route exact path="/" component={Landing} />
+      </Switch>
     </div>
   );
 }
