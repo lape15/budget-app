@@ -1,0 +1,22 @@
+$padding: 5px;
+
+.home {
+  border: 2px solid red;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  //   padding: $padding $padding + 5;
+  .left {
+    border: 2px solid green;
+    flex-basis: 40%;
+    padding: 5px;
+    h2 {
+      font-size: 3rem;
+      font-family: "Roboto", sans-serif;
+    }
+  }
+  .right {
+    border: 2px solid blue;
+    flex-basis: 50%;
+  }
+}
