@@ -1,22 +1,113 @@
 $padding: 5px;
-
+$mobile: 300px;
+$ipad: 768px;
+@mixin mobile {
+  @media (min-width: #{$mobile})  and (max-width : $ipad) {
+    @content;
+  }
+}
+@mixin ipad {
+  @media (min-width: #{$ipad}) {
+    @content;
+  }
+}
+@mixin firefox-only {
+  @at-root {
+    @-moz-document url-prefix() {
+      & {
+        @content;
+      }
+    }
+  }
+}
 .home {
-  border: 2px solid red;
   display: flex;
   flex-flow: row wrap;
   align-items: center;
-  //   padding: $padding $padding + 5;
+  padding: $padding + 5;
+  margin-left: auto;
+  margin-right: auto;
+  width: 94%;
+  height: calc(95vh - 80px);
+  justify-content: space-between;
+
+  @include mobile() {
+    display: block;
+  }
   .left {
-    border: 2px solid green;
-    flex-basis: 40%;
-    padding: 5px;
+    flex-basis: 35%;
+    padding: 5px 5px 5px 15px;
+
     h2 {
-      font-size: 3rem;
+      font-size: 4rem;
+      font-weight: 600;
       font-family: "Roboto", sans-serif;
+      margin-bottom: 40px;
+      .line {
+        font-family: "Roboto", sans-serif;
+        letter-spacing: 1px;
+        overflow: hidden;
+        margin: 0;
+        @include mobile() {
+          font-size: 2rem;
+          line-height: 48px;
+        }
+        .word {
+          opacity: 1;
+        }
+      }
+    }
+
+    span {
+      font-family: "Roboto", sans-serif;
+      line-height: 20px;
+      font-weight: 400;
+      font-size: 1.5rem;
+      line-height: 42px;
+      color: #868585;
+      margin-bottom: 40px;
+      display: block;
+      width: 500px;
+      @include mobile() {
+        font-size: 0.9rem;
+        width: 350px;
+      }
+    }
+
+    .btn-box {
+      margin-top: 20px;
+      button {
+        border-radius: 6px;
+        background-color: #f9b500;
+        border: 1px solid #f9b500;
+        padding: 15px 15px;
+        letter-spacing: 1px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.05s ease-in-out;
+        font-size: 18px;
+        color: #2b2708;
+      }
+      button:hover {
+        background-color: transparent;
+        color: #000;
+        border: 2px solid #f9b500;
+      }
+      @include mobile() {
+      }
     }
   }
+
   .right {
-    border: 2px solid blue;
-    flex-basis: 50%;
+    flex-basis: 55%;
+    overflow: hidden;
+    @include mobile() {
+    }
+    .lady {
+      @include mobile() {
+        width: 358px;
+        height: 352px;
+      }
+    }
   }
 }
