@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
-
 import { Link } from "react-router-dom";
-
 import logo from "../../assets/budget-it.png";
-
 import { currency } from "./currency";
+import { TimelineLite } from "gsap";
 
-import { TimelineLite, Power3 } from "gsap";
 const Register = () => {
   const [user, setUser] = useState({
     firstname: "",
@@ -19,57 +16,57 @@ const Register = () => {
   let auth = useRef(null);
   let tl = new TimelineLite({ paused: true });
 
-  // useEffect(() => {
-  //   tl.fromTo(
-  //     ".text1",
-  //     2,
-  //     {
-  //       width: "0",
-  //     },
-  //     {
-  //       width: "260px",
-  //       ease: "steps(20)",
-  //     },
-  //     0
-  //   );
+  useEffect(() => {
+    tl.fromTo(
+      ".text1",
+      2,
+      {
+        width: "0",
+      },
+      {
+        width: "260px",
+        ease: "steps(20)",
+      },
+      0
+    );
 
-  //   tl.fromTo(
-  //     ".text1",
-  //     0.5,
-  //     { borderRightColor: "rgba(255,255,255,0.8)" },
-  //     {
-  //       repeat: -1,
-  //       ease: "steps(14)",
-  //       borderRightColor: "rgba(255,255,255,0)",
-  //     },
-  //     0
-  //   ).fromTo(
-  //     ".text2",
-  //     2,
-  //     {
-  //       width: "0",
-  //     },
-  //     {
-  //       width: "340px",
-  //       ease: "steps(20)",
-  //       delay: 2,
-  //     },
-  //     0
-  //   );
+    tl.fromTo(
+      ".text1",
+      0.5,
+      { borderRightColor: "rgba(255,255,255,0.8)" },
+      {
+        repeat: -1,
+        ease: "steps(14)",
+        borderRightColor: "rgba(255,255,255,0)",
+      },
+      0
+    ).fromTo(
+      ".text2",
+      2,
+      {
+        width: "0",
+      },
+      {
+        width: "340px",
+        ease: "steps(20)",
+        delay: 2,
+      },
+      0
+    );
 
-  //   tl.fromTo(
-  //     ".text2",
-  //     0.5,
-  //     { borderRightColor: "rgba(255,255,255,0.8)" },
-  //     {
-  //       repeat: -1,
-  //       ease: "steps(14)",
-  //       borderRightColor: "rgba(255,255,255,0)",
-  //     },
-  //     0
-  //   );
-  //   tl.play();
-  // }, []);
+    tl.fromTo(
+      ".text2",
+      0.5,
+      { borderRightColor: "rgba(255,255,255,0.8)" },
+      {
+        repeat: -1,
+        ease: "steps(14)",
+        borderRightColor: "rgba(255,255,255,0)",
+      },
+      0
+    );
+    tl.play();
+  }, []);
 
   const handleChange = (e) => {
     setUser({
@@ -116,7 +113,8 @@ const Register = () => {
             </div>
           </div>
           <div className="w-80">
-            <label className="email">Email</label>
+            <label className="email">Email</label>{" "}
+            <em>So you can log into your account</em>
             <input
               type="email"
               value={user.email}
@@ -124,8 +122,9 @@ const Register = () => {
               name="email"
             />
           </div>
-          <div className="w-80">
+          <div className="w-80 pas">
             <label className="password">Password</label>
+            <em>To keep your account secure</em>
             <input
               type="password"
               value={user.password}
@@ -133,8 +132,9 @@ const Register = () => {
               name="password"
             />
           </div>
-          <div className="w-80">
+          <div className="w-80 pas">
             <label className="conPassword">Confirm password</label>
+            <em>To verify your password</em>
             <input
               type="password"
               value={user.confirmPassword}
@@ -142,8 +142,9 @@ const Register = () => {
               name="confirmPassword"
             />
           </div>
-          <div className="w-80">
+          <div className="w-80 sel">
             <label className="cur">Currency</label>
+            <em>To verify your currency</em>
             <select
               value={user.currency}
               name="currency"
@@ -153,7 +154,7 @@ const Register = () => {
               {currency.map((cur, index) => {
                 return (
                   <option value={cur.cc} key={index}>
-                    {cur.name} {cur.symbol}
+                    {cur.name} - {cur.symbol}
                   </option>
                 );
               })}

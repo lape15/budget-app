@@ -42,14 +42,10 @@ const Landing = () => {
           </div>
         </h2>
         <span className="content">
-          <em>
-            {" "}
-            A practical app to track your spending and help you save more...
-          </em>
+          {" "}
+          A practical app to track your spending and help you save more...
         </span>
-        <span className="content">
-          <em>Budgeting never felt so good...</em>
-        </span>
+        <span className="content">Budgeting never felt so good...</span>
         <div className="btn-box">
           <button>Register now</button>
         </div>

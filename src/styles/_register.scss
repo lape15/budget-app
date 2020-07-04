@@ -23,7 +23,7 @@ $ipad: 768px;
 .auth {
   display: flex;
   flex-flow: row wrap;
-  padding: 10px 15px;
+  padding: 5px 15px;
   background: url("../assets/curved.jpeg") no-repeat;
   background-size: cover;
   background-position: center center;
@@ -34,8 +34,8 @@ $ipad: 768px;
     width: 46%;
     padding-left: 45px;
     display: block;
-    margin-top: 80px;
-    padding-top: 40px;
+    margin-top: 20px;
+    padding-top: 30px;
     color: #fff;
 
     img {
@@ -46,6 +46,7 @@ $ipad: 768px;
         width: 200px;
       }
     }
+
     h3 {
       font-size: 2.7rem;
       padding: 5px;
@@ -58,11 +59,13 @@ $ipad: 768px;
       @include mobile() {
         font-size: 0.8rem;
         padding: 2px;
-        margin-left: -44px;
         line-height: 22px;
         color: #000;
+        width: 280px;
+        margin-left: 28px;
       }
     }
+
     div {
       &.text1 {
         display: block;
@@ -73,16 +76,18 @@ $ipad: 768px;
         width: 260px;
         overflow: hidden;
         white-space: nowrap;
-        // border-right: 5px solid rgba(255, 255, 255, 0.8);
         margin-top: 20px;
+
         @include mobile() {
           display: none;
           color: #000;
         }
+
         em {
           margin-left: 5px;
         }
       }
+
       &.text2 {
         display: block;
         padding: 5px;
@@ -92,7 +97,6 @@ $ipad: 768px;
         width: 340px;
         overflow: hidden;
         white-space: nowrap;
-        // border-right: 5px solid rgba(255, 255, 255, 0.8);
         margin-top: 20px;
         @include mobile() {
           display: none;
@@ -105,17 +109,23 @@ $ipad: 768px;
     }
     @include mobile() {
       height: 320px;
+      margin-top: 5px;
+      padding: 5px;
+      text-align: center;
     }
   }
 
   .reg-form {
-    padding: 40px 60px 0 60px;
-    margin-top: 100px;
+    padding: 20px 60px 0 60px;
+    margin-top: 20px;
     width: 46%;
     box-sizing: border-box;
 
     .first-wrapper {
       display: flex;
+      @include mobile() {
+        display: block;
+      }
     }
 
     form {
@@ -131,7 +141,9 @@ $ipad: 768px;
         margin-bottom: 10px;
         @include mobile {
           text-align: center;
+          width: 100%;
         }
+
         label {
           font-family: "Roboto", sans-serif;
           font-size: 14px;
@@ -151,12 +163,18 @@ $ipad: 768px;
           outline: none;
           transition: border 0.6s;
           font-family: "Roboto", sans-serif;
+
+          @include mobile() {
+            width: 90%;
+          }
         }
       }
+
       .w-80 {
         flex-basis: 100%;
         text-align: left;
         margin-bottom: 10px;
+
         @include mobile {
           text-align: center;
         }
@@ -164,11 +182,19 @@ $ipad: 768px;
           font-family: "Roboto", sans-serif;
           font-size: 14px;
           letter-spacing: 1px;
-          display: block;
+          display: inline-block;
           padding: 5px;
           margin-bottom: 5px;
         }
-
+        em {
+          margin-right: 30px;
+          float: right;
+          font-size: 12px;
+          font-family: "Roboto", sans-serif;
+          margin-top: 5px;
+          letter-spacing: 1px;
+          color: gray;
+        }
         input[type="email"],
         input[type="password"] {
           border: 1px solid #f0f0f0;
@@ -181,22 +207,29 @@ $ipad: 768px;
           transition: border 0.6s;
           font-family: "Roboto", sans-serif;
         }
+        &.pas {
+          margin-top: 15px;
+        }
       }
-      .w-80 {
+
+      .w-80.sel {
         flex-basis: 100%;
         text-align: left;
-        margin-bottom: 10px;
+        margin-top: 15px;
+
         @include mobile {
           text-align: center;
         }
+
         label {
           font-family: "Roboto", sans-serif;
           font-size: 14px;
           letter-spacing: 1px;
-          display: block;
+          display: inline-block;
           padding: 5px;
           margin-bottom: 5px;
         }
+
         select {
           width: 92%;
           border: 1px solid #f0f0f0;
@@ -209,19 +242,23 @@ $ipad: 768px;
           font-family: "Roboto", sans-serif;
         }
       }
+
       input[type="email"]:focus,
       input[type="text"]:focus,
       input[type="password"]:focus,
       select:focus {
         border: 1px solid #158a9e;
       }
+
       .w-80 {
         flex-basis: 100%;
         text-align: left;
         margin-bottom: 10px;
+
         @include mobile {
           text-align: center;
         }
+
         button {
           width: 92%;
           background: #f9b500;
@@ -237,6 +274,7 @@ $ipad: 768px;
           font-family: "Roboto", sans-serif;
           border: 1px solid #f9b500;
           cursor: pointer;
+          transition: all 0.05s ease-in-out;
         }
 
         button:hover {
@@ -245,6 +283,7 @@ $ipad: 768px;
           border: 2px solid #f9b500;
         }
       }
+
       .w-80 {
         flex-basis: 100%;
         text-align: left;
@@ -257,20 +296,36 @@ $ipad: 768px;
           padding: 10px;
           letter-spacing: 1px;
           font-family: "Roboto", sans-serif;
+
           .link {
             color: #f9b500;
           }
         }
       }
+
+      @include mobile() {
+        display: block;
+        padding-left: 2px;
+
+        .w-40,
+        .w-80 {
+          width: 100%;
+        }
+      }
     }
+
     @include mobile() {
       text-align: center;
       padding-top: 5px;
+      width: 100%;
+      padding: 5px;
+      margin-top: 0px;
     }
   }
+
   @include mobile() {
     background-image: none;
     display: block;
-    padding: 10px 5px 0 15px;
+    padding: 10px 5px 0 0;
   }
 }
