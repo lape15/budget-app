@@ -1,0 +1,214 @@
+$mobile: 300px;
+$ipad: 768px;
+@mixin mobile {
+  @media (min-width: #{$mobile})  and (max-width : $ipad) {
+    @content;
+  }
+}
+@mixin ipad {
+  @media (min-width: #{$ipad}) {
+    @content;
+  }
+}
+@mixin firefox-only {
+  @at-root {
+    @-moz-document url-prefix() {
+      & {
+        @content;
+      }
+    }
+  }
+}
+
+.auth {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px 15px;
+  background: url("../assets/curved.jpeg") no-repeat;
+  background-size: cover;
+  background-position: center center;
+
+  .side {
+    flex-basis: 50%;
+    padding-left: 55px;
+    display: block;
+    height: 520px;
+    padding-top: 20px;
+    color: #f9b500;
+    img {
+      width: 150px;
+      margin-left: 20px;
+      margin-top: 40px;
+      @include mobile() {
+        width: 200px;
+      }
+    }
+    h3 {
+      font-size: 2.7rem;
+      padding: 5px;
+      margin-left: 20px;
+      font-family: "Roboto", sans-serif;
+      letter-spacing: 1px;
+      @include mobile() {
+        font-size: 2rem;
+        margin-left: 5px;
+      }
+    }
+    span {
+      display: block;
+      padding: 5px;
+      font-family: "Roboto", sans-serif;
+      margin-left: 20px;
+      letter-spacing: 1px;
+      font-size: 1.2rem;
+      @include mobile() {
+        display: none;
+      }
+    }
+    @include mobile() {
+      height: 320px;
+    }
+  }
+
+  .reg-form {
+    flex-basis: 40%;
+    padding: 100px 5px 0 15px;
+    text-align: center;
+    margin-left: -40px;
+
+    form {
+      position: relative;
+      padding: 5px;
+      padding-top: 20px;
+
+      label {
+        font-family: "Roboto", sans-serif;
+        font-size: 12px;
+        letter-spacing: 1px;
+
+        &.name {
+          position: absolute;
+          top: -2px;
+          left: 63px;
+          @include firefox-only() {
+            top: -2px;
+          }
+        }
+        &.last-name {
+          position: absolute;
+          top: -2px;
+
+          @include firefox-only() {
+            top: -2px;
+          }
+        }
+
+        &.email {
+          display: block;
+          position: absolute;
+          left: 63px;
+        }
+
+        &.password {
+          display: block;
+          position: absolute;
+          left: 63px;
+        }
+
+        &.conPassword {
+          display: block;
+          position: absolute;
+          left: 63px;
+        }
+
+        &.cur {
+          display: block;
+          position: absolute;
+          left: 67px;
+        }
+      }
+
+      input[type="text"] {
+        width: 35%;
+        border: 1px solid #f0f0f0;
+        background: #f6f6f6;
+        padding: 5px;
+        margin-right: 8px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        height: 20px;
+        outline: none;
+        transition: border 0.6s;
+        font-family: "Roboto", sans-serif;
+      }
+      input[type="email"],
+      input[type="password"],
+      select {
+        width: 75%;
+        border: 1px solid #f0f0f0;
+        background: #f6f6f6;
+        padding: 5px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        height: 20px;
+        margin-top: 23px;
+        outline: none;
+        transition: border 0.6s;
+        font-family: "Roboto", sans-serif;
+      }
+
+      select {
+        width: 75%;
+        border: 1px solid #f0f0f0;
+        background: #f6f6f6;
+        padding: 5px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        height: 30px;
+        margin-top: 23px;
+        outline: none;
+        transition: border 0.6s;
+        font-family: "Roboto", sans-serif;
+      }
+      button {
+        width: 75%;
+        background: #f9b500;
+        padding: 10px 15px;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        margin-top: 23px;
+        outline: none;
+        transition: border 0.6s;
+        border: none;
+        letter-spacing: 1px;
+        font-family: "Roboto", sans-serif;
+        border: 1px solid #f9b500;
+        cursor: pointer;
+      }
+      input[type="email"]:focus,
+      input[type="text"]:focus,
+      input[type="password"]:focus,
+      select:focus {
+        border: 1px solid #158a9e;
+      }
+      button:hover {
+        background-color: transparent;
+        color: #000;
+        border: 2px solid #f9b500;
+      }
+      div.back {
+        padding: 10px;
+        letter-spacing: 1px;
+        font-family: "Roboto", sans-serif;
+        .link {
+          color: #f9b500;
+        }
+      }
+    }
+  }
+  @include mobile() {
+    background-image: none;
+    display: block;
+    padding: 10px 5px 0 15px;
+  }
+}
