@@ -194,6 +194,9 @@ $ipad: 768px;
           margin-top: 5px;
           letter-spacing: 1px;
           color: gray;
+          @include mobile() {
+            display: none;
+          }
         }
         input[type="email"],
         input[type="password"] {
