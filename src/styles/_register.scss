@@ -27,14 +27,17 @@ $ipad: 768px;
   background: url("../assets/curved.jpeg") no-repeat;
   background-size: cover;
   background-position: center center;
-  height: 100vh;
+  height: 97.5vh;
+  justify-content: space-between;
+
   .side {
-    flex-basis: 50%;
+    width: 46%;
     padding-left: 45px;
     display: block;
-
+    margin-top: 80px;
     padding-top: 40px;
     color: #fff;
+
     img {
       width: 150px;
       margin-left: 10px;
@@ -44,11 +47,13 @@ $ipad: 768px;
       }
     }
     h3 {
-      font-size: 1.6rem;
+      font-size: 2.7rem;
       padding: 5px;
       margin-left: 2px;
       font-family: "Roboto", sans-serif;
       letter-spacing: 1px;
+      font-weight: 300;
+      width: 500px;
 
       @include mobile() {
         font-size: 0.8rem;
@@ -68,7 +73,7 @@ $ipad: 768px;
         width: 260px;
         overflow: hidden;
         white-space: nowrap;
-        border-right: 5px solid rgba(255, 255, 255, 0.8);
+        // border-right: 5px solid rgba(255, 255, 255, 0.8);
         margin-top: 20px;
         @include mobile() {
           display: none;
@@ -87,7 +92,7 @@ $ipad: 768px;
         width: 340px;
         overflow: hidden;
         white-space: nowrap;
-        border-right: 5px solid rgba(255, 255, 255, 0.8);
+        // border-right: 5px solid rgba(255, 255, 255, 0.8);
         margin-top: 20px;
         @include mobile() {
           display: none;
@@ -104,9 +109,14 @@ $ipad: 768px;
   }
 
   .reg-form {
-    flex-basis: 40%;
-    padding: 40px 5px 0 15px;
-    margin-left: -40px;
+    padding: 40px 60px 0 60px;
+    margin-top: 100px;
+    width: 46%;
+    box-sizing: border-box;
+
+    .first-wrapper {
+      display: flex;
+    }
 
     form {
       padding: 5px;
@@ -124,7 +134,7 @@ $ipad: 768px;
         }
         label {
           font-family: "Roboto", sans-serif;
-          font-size: 12px;
+          font-size: 14px;
           letter-spacing: 1px;
           display: block;
           padding: 5px;
@@ -136,7 +146,8 @@ $ipad: 768px;
           background: #f6f6f6;
           padding: 5px;
           border-radius: 5px;
-          height: 20px;
+          height: 30px;
+          width: 80%;
           outline: none;
           transition: border 0.6s;
           font-family: "Roboto", sans-serif;
@@ -151,7 +162,7 @@ $ipad: 768px;
         }
         label {
           font-family: "Roboto", sans-serif;
-          font-size: 12px;
+          font-size: 14px;
           letter-spacing: 1px;
           display: block;
           padding: 5px;
@@ -164,8 +175,8 @@ $ipad: 768px;
           background: #f6f6f6;
           padding: 5px;
           border-radius: 5px;
-          width: 80%;
-          height: 20px;
+          width: 90%;
+          height: 30px;
           outline: none;
           transition: border 0.6s;
           font-family: "Roboto", sans-serif;
@@ -180,19 +191,19 @@ $ipad: 768px;
         }
         label {
           font-family: "Roboto", sans-serif;
-          font-size: 12px;
+          font-size: 14px;
           letter-spacing: 1px;
           display: block;
           padding: 5px;
           margin-bottom: 5px;
         }
         select {
-          width: 75%;
+          width: 92%;
           border: 1px solid #f0f0f0;
           background: #f6f6f6;
           padding: 5px;
           border-radius: 5px;
-          height: 30px;
+          height: 50px;
           outline: none;
           transition: border 0.6s;
           font-family: "Roboto", sans-serif;
@@ -212,7 +223,7 @@ $ipad: 768px;
           text-align: center;
         }
         button {
-          width: 75%;
+          width: 92%;
           background: #f9b500;
           padding: 10px 15px;
           border-radius: 5px;
@@ -221,6 +232,7 @@ $ipad: 768px;
           outline: none;
           transition: border 0.6s;
           border: none;
+          height: 50px;
           letter-spacing: 1px;
           font-family: "Roboto", sans-serif;
           border: 1px solid #f9b500;

@@ -19,57 +19,57 @@ const Register = () => {
   let auth = useRef(null);
   let tl = new TimelineLite({ paused: true });
 
-  useEffect(() => {
-    tl.fromTo(
-      ".text1",
-      2,
-      {
-        width: "0",
-      },
-      {
-        width: "260px",
-        ease: "steps(20)",
-      },
-      0
-    );
+  // useEffect(() => {
+  //   tl.fromTo(
+  //     ".text1",
+  //     2,
+  //     {
+  //       width: "0",
+  //     },
+  //     {
+  //       width: "260px",
+  //       ease: "steps(20)",
+  //     },
+  //     0
+  //   );
 
-    tl.fromTo(
-      ".text1",
-      0.5,
-      { borderRightColor: "rgba(255,255,255,0.8)" },
-      {
-        repeat: -1,
-        ease: "steps(14)",
-        borderRightColor: "rgba(255,255,255,0)",
-      },
-      0
-    ).fromTo(
-      ".text2",
-      2,
-      {
-        width: "0",
-      },
-      {
-        width: "340px",
-        ease: "steps(20)",
-        delay: 2,
-      },
-      0
-    );
+  //   tl.fromTo(
+  //     ".text1",
+  //     0.5,
+  //     { borderRightColor: "rgba(255,255,255,0.8)" },
+  //     {
+  //       repeat: -1,
+  //       ease: "steps(14)",
+  //       borderRightColor: "rgba(255,255,255,0)",
+  //     },
+  //     0
+  //   ).fromTo(
+  //     ".text2",
+  //     2,
+  //     {
+  //       width: "0",
+  //     },
+  //     {
+  //       width: "340px",
+  //       ease: "steps(20)",
+  //       delay: 2,
+  //     },
+  //     0
+  //   );
 
-    tl.fromTo(
-      ".text2",
-      0.5,
-      { borderRightColor: "rgba(255,255,255,0.8)" },
-      {
-        repeat: -1,
-        ease: "steps(14)",
-        borderRightColor: "rgba(255,255,255,0)",
-      },
-      0
-    );
-    tl.play();
-  }, []);
+  //   tl.fromTo(
+  //     ".text2",
+  //     0.5,
+  //     { borderRightColor: "rgba(255,255,255,0.8)" },
+  //     {
+  //       repeat: -1,
+  //       ease: "steps(14)",
+  //       borderRightColor: "rgba(255,255,255,0)",
+  //     },
+  //     0
+  //   );
+  //   tl.play();
+  // }, []);
 
   const handleChange = (e) => {
     setUser({
@@ -95,23 +95,25 @@ const Register = () => {
       </div>
       <div className="reg-form">
         <form onSubmit={handleRegSubmit}>
-          <div className="w-40">
-            <label className="name">First name</label>
-            <input
-              type="text"
-              value={user.firstname}
-              name="firstname"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="w-40">
-            <label className="last-name">Last name</label>
-            <input
-              type="text"
-              value={user.lastname}
-              onChange={handleChange}
-              name="lastname"
-            />
+          <div className="w-80 first-wrapper">
+            <div className="w-40">
+              <label className="name">First name</label>
+              <input
+                type="text"
+                value={user.firstname}
+                name="firstname"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="w-40">
+              <label className="last-name">Last name</label>
+              <input
+                type="text"
+                value={user.lastname}
+                onChange={handleChange}
+                name="lastname"
+              />
+            </div>
           </div>
           <div className="w-80">
             <label className="email">Email</label>
