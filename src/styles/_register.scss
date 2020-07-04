@@ -27,42 +27,75 @@ $ipad: 768px;
   background: url("../assets/curved.jpeg") no-repeat;
   background-size: cover;
   background-position: center center;
-
+  height: 100vh;
   .side {
     flex-basis: 50%;
-    padding-left: 55px;
+    padding-left: 45px;
     display: block;
-    height: 520px;
-    padding-top: 20px;
+
+    padding-top: 40px;
     color: #fff;
     img {
       width: 150px;
-      margin-left: 20px;
-      margin-top: 40px;
+      margin-left: 10px;
+
       @include mobile() {
         width: 200px;
       }
     }
     h3 {
-      font-size: 2.7rem;
+      font-size: 1.6rem;
       padding: 5px;
-      margin-left: 20px;
+      margin-left: 2px;
       font-family: "Roboto", sans-serif;
       letter-spacing: 1px;
+
       @include mobile() {
-        font-size: 2rem;
-        margin-left: 5px;
+        font-size: 0.8rem;
+        padding: 2px;
+        margin-left: -44px;
+        line-height: 22px;
+        color: #000;
       }
     }
-    span {
-      display: block;
-      padding: 5px;
-      font-family: "Roboto", sans-serif;
-      margin-left: 20px;
-      letter-spacing: 1px;
-      font-size: 1.2rem;
-      @include mobile() {
-        display: none;
+    div {
+      &.text1 {
+        display: block;
+        padding: 5px;
+        font-family: "Roboto", sans-serif;
+        letter-spacing: 1px;
+        font-size: 1.5rem;
+        width: 260px;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 5px solid rgba(255, 255, 255, 0.8);
+        margin-top: 20px;
+        @include mobile() {
+          display: none;
+          color: #000;
+        }
+        em {
+          margin-left: 5px;
+        }
+      }
+      &.text2 {
+        display: block;
+        padding: 5px;
+        font-family: "Roboto", sans-serif;
+        letter-spacing: 1px;
+        font-size: 1.5rem;
+        width: 340px;
+        overflow: hidden;
+        white-space: nowrap;
+        border-right: 5px solid rgba(255, 255, 255, 0.8);
+        margin-top: 20px;
+        @include mobile() {
+          display: none;
+          color: #000;
+        }
+        em {
+          margin-left: 5px;
+        }
       }
     }
     @include mobile() {
@@ -72,118 +105,98 @@ $ipad: 768px;
 
   .reg-form {
     flex-basis: 40%;
-    padding: 100px 5px 0 15px;
-    text-align: center;
+    padding: 40px 5px 0 15px;
     margin-left: -40px;
 
     form {
-      position: relative;
       padding: 5px;
-      padding-top: 20px;
+      padding-left: 20px;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
 
-      label {
-        font-family: "Roboto", sans-serif;
-        font-size: 12px;
-        letter-spacing: 1px;
-
-        &.name {
-          position: absolute;
-          top: -2px;
-          left: 63px;
-          @include firefox-only() {
-            top: -2px;
-          }
+      .w-40 {
+        flex-basis: 50%;
+        text-align: left;
+        margin-bottom: 10px;
+        @include mobile {
+          text-align: center;
         }
-        &.last-name {
-          position: absolute;
-          top: -2px;
-
-          @include firefox-only() {
-            top: -2px;
-          }
-        }
-
-        &.email {
+        label {
+          font-family: "Roboto", sans-serif;
+          font-size: 12px;
+          letter-spacing: 1px;
           display: block;
-          position: absolute;
-          left: 63px;
+          padding: 5px;
+          margin-bottom: 5px;
         }
 
-        &.password {
-          display: block;
-          position: absolute;
-          left: 63px;
-        }
-
-        &.conPassword {
-          display: block;
-          position: absolute;
-          left: 63px;
-        }
-
-        &.cur {
-          display: block;
-          position: absolute;
-          left: 67px;
+        input[type="text"] {
+          border: 1px solid #f0f0f0;
+          background: #f6f6f6;
+          padding: 5px;
+          border-radius: 5px;
+          height: 20px;
+          outline: none;
+          transition: border 0.6s;
+          font-family: "Roboto", sans-serif;
         }
       }
+      .w-80 {
+        flex-basis: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+        @include mobile {
+          text-align: center;
+        }
+        label {
+          font-family: "Roboto", sans-serif;
+          font-size: 12px;
+          letter-spacing: 1px;
+          display: block;
+          padding: 5px;
+          margin-bottom: 5px;
+        }
 
-      input[type="text"] {
-        width: 35%;
-        border: 1px solid #f0f0f0;
-        background: #f6f6f6;
-        padding: 5px;
-        margin-right: 8px;
-        border-radius: 5px;
-        margin-bottom: 15px;
-        height: 20px;
-        outline: none;
-        transition: border 0.6s;
-        font-family: "Roboto", sans-serif;
+        input[type="email"],
+        input[type="password"] {
+          border: 1px solid #f0f0f0;
+          background: #f6f6f6;
+          padding: 5px;
+          border-radius: 5px;
+          width: 80%;
+          height: 20px;
+          outline: none;
+          transition: border 0.6s;
+          font-family: "Roboto", sans-serif;
+        }
       }
-      input[type="email"],
-      input[type="password"],
-      select {
-        width: 75%;
-        border: 1px solid #f0f0f0;
-        background: #f6f6f6;
-        padding: 5px;
-        border-radius: 5px;
-        margin-bottom: 15px;
-        height: 20px;
-        margin-top: 23px;
-        outline: none;
-        transition: border 0.6s;
-        font-family: "Roboto", sans-serif;
-      }
-
-      select {
-        width: 75%;
-        border: 1px solid #f0f0f0;
-        background: #f6f6f6;
-        padding: 5px;
-        border-radius: 5px;
-        margin-bottom: 15px;
-        height: 30px;
-        margin-top: 23px;
-        outline: none;
-        transition: border 0.6s;
-        font-family: "Roboto", sans-serif;
-      }
-      button {
-        width: 75%;
-        background: #f9b500;
-        padding: 10px 15px;
-        border-radius: 5px;
-        margin-bottom: 15px;
-        margin-top: 23px;
-        outline: none;
-        transition: border 0.6s;
-        border: none;
-        letter-spacing: 1px;
-        font-family: "Roboto", sans-serif;
-        border: 1px solid #f9b500;
-        cursor: pointer;
+      .w-80 {
+        flex-basis: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+        @include mobile {
+          text-align: center;
+        }
+        label {
+          font-family: "Roboto", sans-serif;
+          font-size: 12px;
+          letter-spacing: 1px;
+          display: block;
+          padding: 5px;
+          margin-bottom: 5px;
+        }
+        select {
+          width: 75%;
+          border: 1px solid #f0f0f0;
+          background: #f6f6f6;
+          padding: 5px;
+          border-radius: 5px;
+          height: 30px;
+          outline: none;
+          transition: border 0.6s;
+          font-family: "Roboto", sans-serif;
+        }
       }
       input[type="email"]:focus,
       input[type="text"]:focus,
@@ -191,19 +204,56 @@ $ipad: 768px;
       select:focus {
         border: 1px solid #158a9e;
       }
-      button:hover {
-        background-color: transparent;
-        color: #000;
-        border: 2px solid #f9b500;
-      }
-      div.back {
-        padding: 10px;
-        letter-spacing: 1px;
-        font-family: "Roboto", sans-serif;
-        .link {
-          color: #f9b500;
+      .w-80 {
+        flex-basis: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+        @include mobile {
+          text-align: center;
+        }
+        button {
+          width: 75%;
+          background: #f9b500;
+          padding: 10px 15px;
+          border-radius: 5px;
+          margin-bottom: 15px;
+          margin-top: 23px;
+          outline: none;
+          transition: border 0.6s;
+          border: none;
+          letter-spacing: 1px;
+          font-family: "Roboto", sans-serif;
+          border: 1px solid #f9b500;
+          cursor: pointer;
+        }
+
+        button:hover {
+          background-color: transparent;
+          color: #000;
+          border: 2px solid #f9b500;
         }
       }
+      .w-80 {
+        flex-basis: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+        @include mobile {
+          text-align: center;
+        }
+
+        &.back {
+          padding: 10px;
+          letter-spacing: 1px;
+          font-family: "Roboto", sans-serif;
+          .link {
+            color: #f9b500;
+          }
+        }
+      }
+    }
+    @include mobile() {
+      text-align: center;
+      padding-top: 5px;
     }
   }
   @include mobile() {
