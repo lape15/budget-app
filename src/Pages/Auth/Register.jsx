@@ -80,7 +80,9 @@ const Register = () => {
   return (
     <div className="auth" ref={(el) => (auth = el)}>
       <div className="side">
-        <img src={logo} alt="BudgetIt logo" />
+        <Link to="/">
+          <img src={logo} alt="BudgetIt logo" />{" "}
+        </Link>
 
         <h3 className="text-1">Your free account is only 2 seconds away</h3>
         <div className="text1">

@@ -45,7 +45,7 @@ const Landing = () => {
           {" "}
           A practical app to track your spending and help you save more...
         </span>
-        <span className="content">Budgeting never felt so good...</span>
+
         <div className="btn-box">
           <button>Register now</button>
         </div>
