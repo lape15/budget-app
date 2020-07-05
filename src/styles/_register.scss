@@ -1,0 +1,334 @@
+$mobile: 300px;
+$ipad: 768px;
+@mixin mobile {
+  @media (min-width: #{$mobile})  and (max-width : $ipad) {
+    @content;
+  }
+}
+@mixin ipad {
+  @media (min-width: #{$ipad}) {
+    @content;
+  }
+}
+@mixin firefox-only {
+  @at-root {
+    @-moz-document url-prefix() {
+      & {
+        @content;
+      }
+    }
+  }
+}
+
+.auth {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 5px 15px;
+  background: url("../assets/curved.jpeg") no-repeat;
+  background-size: cover;
+  background-position: center center;
+  height: 97.5vh;
+  justify-content: space-between;
+
+  .side {
+    width: 46%;
+    padding-left: 45px;
+    display: block;
+    margin-top: 20px;
+    padding-top: 30px;
+    color: #fff;
+
+    img {
+      width: 150px;
+      margin-left: 10px;
+
+      @include mobile() {
+        width: 200px;
+      }
+    }
+
+    h3 {
+      font-size: 2.7rem;
+      padding: 5px;
+      margin-left: 2px;
+      font-family: "Roboto", sans-serif;
+      letter-spacing: 1px;
+      font-weight: 300;
+      width: 500px;
+
+      @include mobile() {
+        font-size: 0.8rem;
+        padding: 2px;
+        line-height: 22px;
+        color: #000;
+        width: 280px;
+        margin-left: 28px;
+      }
+    }
+
+    div {
+      &.text1 {
+        display: block;
+        padding: 5px;
+        font-family: "Roboto", sans-serif;
+        letter-spacing: 1px;
+        font-size: 1.5rem;
+        width: 260px;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-top: 20px;
+
+        @include mobile() {
+          display: none;
+          color: #000;
+        }
+
+        em {
+          margin-left: 5px;
+        }
+      }
+
+      &.text2 {
+        display: block;
+        padding: 5px;
+        font-family: "Roboto", sans-serif;
+        letter-spacing: 1px;
+        font-size: 1.5rem;
+        width: 340px;
+        overflow: hidden;
+        white-space: nowrap;
+        margin-top: 20px;
+        @include mobile() {
+          display: none;
+          color: #000;
+        }
+        em {
+          margin-left: 5px;
+        }
+      }
+    }
+    @include mobile() {
+      height: 320px;
+      margin-top: 5px;
+      padding: 5px;
+      text-align: center;
+    }
+  }
+
+  .reg-form {
+    padding: 20px 60px 0 60px;
+    margin-top: 40px;
+    width: 46%;
+    box-sizing: border-box;
+
+    .first-wrapper {
+      display: flex;
+      @include mobile() {
+        display: block;
+      }
+    }
+
+    form {
+      padding: 5px;
+      padding-left: 20px;
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: space-around;
+
+      .w-40 {
+        flex-basis: 50%;
+        text-align: left;
+        margin-bottom: 10px;
+        @include mobile {
+          text-align: center;
+          width: 100%;
+        }
+
+        label {
+          font-family: "Roboto", sans-serif;
+          font-size: 14px;
+          letter-spacing: 1px;
+          display: block;
+          padding: 5px;
+          margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+          border: 1px solid #f0f0f0;
+          background: #f6f6f6;
+          padding: 5px;
+          border-radius: 5px;
+          height: 30px;
+          width: 80%;
+          outline: none;
+          transition: border 0.6s;
+          font-family: "Roboto", sans-serif;
+
+          @include mobile() {
+            width: 90%;
+          }
+        }
+      }
+
+      .w-80 {
+        flex-basis: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+
+        @include mobile {
+          text-align: center;
+        }
+        label {
+          font-family: "Roboto", sans-serif;
+          font-size: 14px;
+          letter-spacing: 1px;
+          display: inline-block;
+          padding: 5px;
+          margin-bottom: 5px;
+        }
+        em {
+          margin-right: 30px;
+          float: right;
+          font-size: 12px;
+          font-family: "Roboto", sans-serif;
+          margin-top: 5px;
+          letter-spacing: 1px;
+          color: gray;
+          @include mobile() {
+            display: none;
+          }
+        }
+        input[type="email"],
+        input[type="password"] {
+          border: 1px solid #f0f0f0;
+          background: #f6f6f6;
+          padding: 5px;
+          border-radius: 5px;
+          width: 90%;
+          height: 30px;
+          outline: none;
+          transition: border 0.6s;
+          font-family: "Roboto", sans-serif;
+        }
+        &.pas {
+          margin-top: 15px;
+        }
+      }
+
+      .w-80.sel {
+        flex-basis: 100%;
+        text-align: left;
+        margin-top: 15px;
+
+        @include mobile {
+          text-align: center;
+        }
+
+        label {
+          font-family: "Roboto", sans-serif;
+          font-size: 14px;
+          letter-spacing: 1px;
+          display: inline-block;
+          padding: 5px;
+          margin-bottom: 5px;
+        }
+
+        select {
+          width: 92%;
+          border: 1px solid #f0f0f0;
+          background: #f6f6f6;
+          padding: 5px;
+          border-radius: 5px;
+          height: 50px;
+          outline: none;
+          transition: border 0.6s;
+          font-family: "Roboto", sans-serif;
+        }
+      }
+
+      input[type="email"]:focus,
+      input[type="text"]:focus,
+      input[type="password"]:focus,
+      select:focus {
+        border: 1px solid #158a9e;
+      }
+
+      .w-80 {
+        flex-basis: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+
+        @include mobile {
+          text-align: center;
+        }
+
+        button {
+          width: 92%;
+          background: #f9b500;
+          padding: 10px 15px;
+          border-radius: 5px;
+          margin-bottom: 15px;
+          margin-top: 23px;
+          outline: none;
+          transition: border 0.6s;
+          border: none;
+          height: 50px;
+          letter-spacing: 1px;
+          font-family: "Roboto", sans-serif;
+          border: 1px solid #f9b500;
+          cursor: pointer;
+          transition: all 0.05s ease-in-out;
+        }
+
+        button:hover {
+          background-color: transparent;
+          color: #000;
+          border: 2px solid #f9b500;
+        }
+      }
+
+      .w-80 {
+        flex-basis: 100%;
+        text-align: left;
+        margin-bottom: 10px;
+        @include mobile {
+          text-align: center;
+        }
+
+        &.back {
+          padding: 10px;
+          letter-spacing: 1px;
+          font-family: "Roboto", sans-serif;
+
+          .link {
+            color: #f9b500;
+          }
+        }
+      }
+
+      @include mobile() {
+        display: block;
+        padding-left: 2px;
+
+        .w-40,
+        .w-80 {
+          width: 100%;
+        }
+      }
+    }
+
+    @include mobile() {
+      text-align: center;
+      padding-top: 5px;
+      width: 100%;
+      padding: 5px;
+      margin-top: 0px;
+    }
+  }
+
+  @include mobile() {
+    background-image: none;
+    display: block;
+    padding: 10px 5px 0 0;
+  }
+}

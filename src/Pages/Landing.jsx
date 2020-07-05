@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from "react";
+
 import { ReactComponent as ReactLogo } from "../assets/landing-image.svg";
+
 import { TimelineLite, Power3 } from "gsap";
 
 const Landing = () => {
@@ -40,8 +42,10 @@ const Landing = () => {
           </div>
         </h2>
         <span className="content">
-          A practical app to track your spending and help you save more..{" "}
+          {" "}
+          A practical app to track your spending and help you save more...
         </span>
+
         <div className="btn-box">
           <button>Register now</button>
         </div>
