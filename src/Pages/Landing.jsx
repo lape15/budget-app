@@ -1,11 +1,8 @@
-import React, { useEffect, useRef } from "react";
-
+import React, { useEffect } from "react";
 import { ReactComponent as ReactLogo } from "../assets/landing-image.svg";
-
 import { TimelineLite, Power3 } from "gsap";
 
 const Landing = () => {
-  let home = useRef(null);
   let tl = new TimelineLite({ delay: 0.8 });
 
   useEffect(() => {
@@ -28,7 +25,7 @@ const Landing = () => {
   });
 
   return (
-    <div className="home" ref={(el) => (home = el)}>
+    <div className="home">
       <div className="left">
         <h2>
           <div className="line">
