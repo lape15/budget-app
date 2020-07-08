@@ -1,18 +1,19 @@
 $mobile: 300px;
 $ipad: 768px;
 $bigScreen: 1440px;
-@mixin mobile {
-  @media (min-width: #{$mobile})  and (max-width : $ipad) {
+
+@mixin big-screen {
+  @media (min-width: #{$bigScreen}) {
     @content;
   }
 }
 @mixin ipad {
-  @media (min-width: #{$ipad}) {
+  @media (max-width: #{$ipad}) {
     @content;
   }
 }
-@mixin big-screen {
-  @media (min-width: #{$bigScreen}) {
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
     @content;
   }
 }
@@ -58,16 +59,26 @@ $bigScreen: 1440px;
       display: block;
       width: 200px;
 
-      @include mobile() {
+      @include ipad() {
         width: max-content;
+        width: auto;
       }
+
       img {
         width: 150px;
         margin-left: 10px;
 
+        @include ipad() {
+          width: 200px;
+          text-align: center;
+          padding-left: 0;
+          margin-left: 0;
+        }
+
         @include mobile() {
           width: 200px;
           text-align: center;
+          padding-left: 0;
         }
       }
     }
@@ -81,13 +92,12 @@ $bigScreen: 1440px;
       font-weight: 300;
       width: 500px;
 
-      @include mobile() {
+      @include ipad() {
         font-size: 0.8rem;
         padding: 2px;
         line-height: 22px;
         color: #000;
-        width: max-content;
-        // margin-left: 28px;
+        width: auto;
       }
     }
 
@@ -103,7 +113,7 @@ $bigScreen: 1440px;
         white-space: nowrap;
         margin-top: 20px;
 
-        @include mobile() {
+        @include ipad() {
           display: none;
           color: #000;
         }
@@ -132,6 +142,14 @@ $bigScreen: 1440px;
         }
       }
     }
+
+    @include ipad() {
+      text-align: center;
+      height: 320px;
+      width: auto;
+      padding: 2px;
+    }
+
     @include mobile() {
       height: 320px;
       margin-top: 5px;
@@ -150,8 +168,9 @@ $bigScreen: 1440px;
     .first-wrapper {
       display: flex;
       justify-content: space-between;
-      @include mobile() {
+      @include ipad() {
         display: block;
+        text-align: center;
       }
     }
 
@@ -171,7 +190,7 @@ $bigScreen: 1440px;
         flex-basis: 48%;
         text-align: left;
         margin-bottom: 10px;
-        @include mobile {
+        @include ipad() {
           text-align: center;
           width: 100%;
         }
@@ -200,6 +219,12 @@ $bigScreen: 1440px;
           &.border-red {
             border: 1px solid red;
           }
+
+          @include ipad() {
+            width: 100%;
+            font-size: 16px;
+          }
+
           @include mobile() {
             width: 100%;
             font-size: 16px;
@@ -213,9 +238,6 @@ $bigScreen: 1440px;
         margin-bottom: 10px;
         width: 100%;
 
-        @include mobile {
-          text-align: center;
-        }
         label {
           font-family: "Roboto", sans-serif;
           font-size: 14px;
@@ -232,7 +254,7 @@ $bigScreen: 1440px;
           letter-spacing: 1px;
           color: gray;
 
-          @include mobile() {
+          @include ipad() {
             display: none;
           }
         }
@@ -251,12 +273,24 @@ $bigScreen: 1440px;
           &.border-red {
             border: 1px solid red;
           }
+
+          @include ipad() {
+            width: 100%;
+            font-size: 16px;
+          }
+
           @include mobile() {
+            width: 100%;
             font-size: 16px;
           }
         }
         &.pas {
           margin-top: 15px;
+        }
+        @include ipad() {
+          text-align: center;
+          width: 100%;
+          display: block;
         }
       }
 
@@ -265,10 +299,6 @@ $bigScreen: 1440px;
         text-align: left;
         margin-top: 15px;
         width: 100%;
-
-        @include mobile {
-          text-align: center;
-        }
 
         label {
           font-family: "Roboto", sans-serif;
@@ -293,6 +323,10 @@ $bigScreen: 1440px;
             font-size: 16px;
           }
         }
+        @include ipad {
+          text-align: center;
+          width: 100%;
+        }
       }
 
       input[type="email"]:focus,
@@ -307,9 +341,6 @@ $bigScreen: 1440px;
         text-align: left;
         margin-bottom: 10px;
         width: 100%;
-        @include mobile {
-          text-align: center;
-        }
 
         button {
           width: 100%;
@@ -339,11 +370,14 @@ $bigScreen: 1440px;
           color: #000;
           border: 2px solid #f9b500;
         }
+        @include ipad() {
+          text-align: center;
+        }
       }
 
       .w-80 {
         flex-basis: 100%;
-        text-align: left;
+        // text-align: left;
         margin-bottom: 10px;
 
         @include mobile {
@@ -361,7 +395,7 @@ $bigScreen: 1440px;
         }
       }
 
-      @include mobile() {
+      @include ipad() {
         display: block;
         padding-left: 2px;
         text-align: center;
@@ -372,18 +406,32 @@ $bigScreen: 1440px;
       }
     }
 
+    @include ipad() {
+      text-align: center;
+      padding-top: 5px;
+      width: auto;
+      margin-top: 0px;
+      display: block;
+    }
     @include mobile() {
       text-align: center;
       padding-top: 5px;
-      width: 100%;
+      width: auto;
       margin-top: 0px;
+      display: block;
     }
   }
 
+  @include ipad() {
+    text-align: center;
+    display: block;
+    background-image: none;
+  }
   @include mobile() {
     background-image: none;
     display: block;
     padding: 10px 5px 0 0;
+    text-align: center;
   }
 }
 .error {
