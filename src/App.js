@@ -4,7 +4,7 @@ import "./styles/main.scss";
 import Landing from "./Pages/Landing.jsx";
 import { TweenMax } from "gsap";
 import { Switch, Route, withRouter } from "react-router-dom";
-import Register from "./Pages/Auth/Register.jsx";
+import Auth from "./Pages/Auth/index";
 import Dashboard from "./Pages/Dashboard/index.jsx";
 
 function App(props) {
@@ -21,7 +21,7 @@ function App(props) {
       ) : null}
       <Switch>
         <Route exact path="/" component={Landing} />
-        <Route exact path="/register" component={Register} />
+        <Route path="/(login|register)/" exact component={Auth} />
         <Route exact path="/dashboard" component={Dashboard} />
       </Switch>
     </div>
