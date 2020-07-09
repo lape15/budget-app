@@ -89,8 +89,8 @@ const Register = (props) => {
           setUser(response.data.payload);
         })
         .catch((error) => {
+          setLoading(false);
           if (error && error.response) {
-            setLoading(false);
             setAuthenticationError(error.response.data.error);
           }
         });
