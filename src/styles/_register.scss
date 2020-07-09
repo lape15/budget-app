@@ -133,7 +133,7 @@ $bigScreen: 1440px;
         overflow: hidden;
         white-space: nowrap;
         margin-top: 20px;
-        @include mobile() {
+        @include ipad() {
           display: none;
           color: #000;
         }
