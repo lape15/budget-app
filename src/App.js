@@ -4,7 +4,7 @@ import "./styles/main.scss";
 import Landing from "./Pages/Landing.jsx";
 import { TweenMax } from "gsap";
 import { Switch, Route, withRouter } from "react-router-dom";
-import Auth from "./Pages/Auth/index";
+import Auth from "./Pages/Auth/index.jsx";
 import Dashboard from "./Pages/Dashboard/index.jsx";
 
 function App(props) {

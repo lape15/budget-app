@@ -5,7 +5,7 @@ import * as Yup from "yup";
 import { TimelineLite, Power3 } from "gsap";
 import { makeAuthenticatedApiCall } from "../Api.js";
 
-const url = "https://atumaatu.herokuapp.com/v1/sessions/";
+const path = "sessions";
 
 const Login = (props) => {
   const [loading, setLoading] = useState(false);
@@ -16,11 +16,12 @@ const Login = (props) => {
     props.history.push("/dashboard");
     localStorage.setItem("user", JSON.stringify(user.token));
   }
+
   let tl = new TimelineLite();
 
   useEffect(() => {
     tl.from(".login", 3, { y: 40, ease: Power3.easeOut });
-  }, []);
+  }, [tl]);
 
   const formik = useFormik({
     initialValues: {
@@ -43,7 +44,7 @@ const Login = (props) => {
 
     onSubmit: (values) => {
       setLoading(true);
-      const responses = makeAuthenticatedApiCall("post", url, {
+      const responses = makeAuthenticatedApiCall("post", path, {
         email: values.email,
         password: values.password,
       });
@@ -56,6 +57,7 @@ const Login = (props) => {
           if (error && error.response) {
             setLoading(false);
             setAuthenticationError(error.response.data.error);
+            console.log(error.response, error);
           }
         });
     },
@@ -105,7 +107,7 @@ const Login = (props) => {
       <div className="w-80">
         <button type="submit" disabled={loading}>
           Login
-          {loading && <i class="fas fa-spinner"></i>}
+          {loading && <i className="fas fa-spinner"></i>}
         </button>
       </div>
       <div className="w-80 back">

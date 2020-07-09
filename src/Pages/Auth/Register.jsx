@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { TimelineLite, Power3 } from "gsap";
 import { makeAuthenticatedApiCall } from "../Api.js";
 
-const url = "https://atumaatu.herokuapp.com/v1/users";
+const path = "users";
 
 const Register = (props) => {
   const [authenticationError, setAuthenticationError] = useState(null);
@@ -17,10 +17,12 @@ const Register = (props) => {
     props.history.push("/dashboard");
     localStorage.setItem("user", JSON.stringify(user.token));
   }
+
   let tl = new TimelineLite();
+
   useEffect(() => {
     tl.from(".register", 3, { y: 10, ease: Power3.easeOut });
-  }, []);
+  }, [tl]);
 
   const formik = useFormik({
     initialValues: {
@@ -80,7 +82,7 @@ const Register = (props) => {
         },
       };
 
-      const responses = makeAuthenticatedApiCall("post", url, users);
+      const responses = makeAuthenticatedApiCall("post", path, users);
       responses
         .then((response) => {
           setLoading(false);
@@ -212,7 +214,7 @@ const Register = (props) => {
       <div className="w-80">
         <button type="submit" disabled={loading}>
           Create your free account
-          {loading && <i class="fas fa-spinner"></i>}
+          {loading && <i className="fas fa-spinner"></i>}
         </button>
       </div>
       <div className="w-80 back">

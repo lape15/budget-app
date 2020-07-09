@@ -58,7 +58,7 @@ const Auth = () => {
       0
     );
     tl.play();
-  }, []);
+  }, [tl]);
 
   if (localStorage.user) {
     return <Redirect to="/dashboard" />;
