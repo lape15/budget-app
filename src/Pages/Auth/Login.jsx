@@ -58,7 +58,6 @@ const Login = (props) => {
           setLoading(false);
           if (error && error.response) {
             setAuthenticationError(error.response.data.error);
-            console.log(error.response, error);
           }
         });
     },
