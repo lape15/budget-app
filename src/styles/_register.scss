@@ -319,6 +319,10 @@ $bigScreen: 1440px;
           outline: none;
           transition: border 0.6s;
           font-family: "Roboto", sans-serif;
+          @include ipad {
+            font-size: 16px;
+          }
+
           @include mobile() {
             font-size: 16px;
           }
