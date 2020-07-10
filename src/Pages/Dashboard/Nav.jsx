@@ -59,11 +59,11 @@ const Nav = () => {
         <div className="dropdown">
           <i className="fas fa-chevron-circle-down" onClick={handleToggle}></i>
           <div className="dropdown-box">
+            <div className="item">
+              <i className="far fa-bookmark"></i> Library
+            </div>
             <div className="item" onClick={logOut}>
               <i className="fas fa-power-off"></i>Logout
-            </div>
-            <div className="item">
-              <i class="far fa-bookmark"></i> Library
             </div>
           </div>
         </div>

@@ -19,14 +19,14 @@
   display: flex;
   flex-flow: row wrap;
   padding: 10px 1px 10px 25px;
-  max-height: 70px;
+  max-height: 55px;
   box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.25);
 
   .left {
     flex-basis: 65%;
 
     img {
-      width: 75px;
+      width: 65px;
     }
   }
   .right {
@@ -34,15 +34,13 @@
     display: flex;
     flex-flow: row wrap;
     justify-content: flex-end;
-    height: 70px;
+    align-content: center;
 
     .name {
-      flex-basis: 53%;
       height: auto;
       text-align: right;
       padding: 10px;
       box-sizing: border-box;
-      margin-top: 20px;
 
       span {
         color: #fff;
@@ -58,9 +56,7 @@
     }
 
     .dropdown {
-      flex-basis: 23%;
       height: 10px;
-      margin-top: 20px;
       position: relative;
       margin-left: 0;
       padding: 10px 0 10px 0;
@@ -68,29 +64,22 @@
       @include ipad() {
         margin-left: 0;
         padding: 0;
-        margin-top: 30px;
+        margin-top: 10px;
       }
 
-      .fas {
+      & > .fas {
         color: #f9b500;
         cursor: pointer;
       }
 
-      .hide {
-        display: none;
-      }
-
-      .show {
-        display: inline-block;
-      }
       .dropdown-box {
         border: 1px solid rgba(0, 0, 0, 0.25);
         border-radius: 7px;
         position: absolute;
         display: inline-block;
-        width: 130px;
-        right: 70px;
-        top: 50px;
+        width: 180px;
+        right: 0;
+        top: 60px;
         text-align: center;
         background-color: #fff;
         max-height: 100px;
@@ -100,24 +89,28 @@
         transform: scale(0.2);
 
         @include ipad() {
-          right: 15px;
+          right: 0;
           top: 40px;
         }
 
         .item {
           border-bottom: 1px solid rgba(0, 0, 0, 0.25);
           height: 25px;
-          padding: 8px 5px;
+          padding: 8px 15px;
           font-family: "Roboto", sans-serif;
           letter-spacing: 1px;
-          color: #f9b500;
+          color: #000;
           cursor: pointer;
+          text-align: left;
 
           .fas,
           .far {
-            color: rgba(0, 0, 0, 0.5);
+            // color: rgba(0, 0, 0, 0.5);
             margin-right: 15px;
           }
+        }
+        .item:hover {
+          color: #f9b500;
         }
       }
     }
