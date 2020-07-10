@@ -11,16 +11,20 @@ const Login = (props) => {
   const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [authenticationError, setAuthenticationError] = useState(null);
+  const [tl] = useState(
+    new TimelineLite({
+      paused: true,
+    })
+  );
 
   if (user) {
     props.history.push("/dashboard");
-    localStorage.setItem("user", JSON.stringify(user.token));
+    localStorage.setItem("user", JSON.stringify(user));
   }
 
-  let tl = new TimelineLite();
-
   useEffect(() => {
-    tl.from(".login", 3, { y: 40, ease: Power3.easeOut });
+    tl.from(".login", 3, { y: 30, ease: Power3.easeOut });
+    tl.play();
   }, [tl]);
 
   const formik = useFormik({
@@ -65,7 +69,9 @@ const Login = (props) => {
 
   return (
     <form className="login" onSubmit={formik.handleSubmit}>
-      {authenticationError ? <h3>{authenticationError}</h3> : null}
+      <div className="w-80 error-box">
+        {authenticationError ? <span>{authenticationError}</span> : null}{" "}
+      </div>
       <div className="w-80">
         <label className="email">Email</label>{" "}
         <em>So you can log into your account</em>

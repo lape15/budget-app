@@ -12,16 +12,20 @@ const Register = (props) => {
   const [authenticationError, setAuthenticationError] = useState(null);
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [tl] = useState(
+    new TimelineLite({
+      paused: true,
+    })
+  );
 
   if (user) {
     props.history.push("/dashboard");
-    localStorage.setItem("user", JSON.stringify(user.token));
+    localStorage.setItem("user", JSON.stringify(user));
   }
-
-  let tl = new TimelineLite();
 
   useEffect(() => {
     tl.from(".register", 3, { y: 10, ease: Power3.easeOut });
+    tl.play();
   }, [tl]);
 
   const formik = useFormik({

@@ -93,11 +93,12 @@ $bigScreen: 1440px;
       width: 500px;
 
       @include ipad() {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         padding: 2px;
         line-height: 22px;
         color: #000;
         width: auto;
+        font-weight: 600;
       }
     }
 
@@ -181,10 +182,14 @@ $bigScreen: 1440px;
       flex-direction: column;
       justify-content: space-around;
 
-      h3 {
-        color: red;
-        font-family: "Roboto", sans-serif;
-        letter-spacing: 1px;
+      .error-box {
+        span {
+          color: red;
+          font-family: "Roboto", sans-serif;
+          letter-spacing: 1px;
+          font-size: 1.2rem;
+          font-weight: 500;
+        }
       }
       .w-40 {
         flex-basis: 48%;
@@ -207,14 +212,15 @@ $bigScreen: 1440px;
         input[type="text"] {
           border: 1px solid #f0f0f0;
           background: #f6f6f6;
-          padding: 5px;
+          padding: 15px 5px;
           border-radius: 5px;
-          height: 30px;
+          height: 35px;
           width: 100%;
           box-sizing: border-box;
           outline: none;
           transition: border 0.6s;
           font-family: "Roboto", sans-serif;
+          -webkit-appearance: none;
 
           &.border-red {
             border: 1px solid red;
@@ -223,6 +229,7 @@ $bigScreen: 1440px;
           @include ipad() {
             width: 100%;
             font-size: 16px;
+            height: 40px;
           }
 
           @include mobile() {
@@ -262,14 +269,15 @@ $bigScreen: 1440px;
         input[type="password"] {
           border: 1px solid #f0f0f0;
           background: #f6f6f6;
-          padding: 5px;
+          padding: 15px 5px;
           border-radius: 5px;
           width: 100%;
-          height: 30px;
+          height: 35px;
           outline: none;
           transition: border 0.6s;
           font-family: "Roboto", sans-serif;
           box-sizing: border-box;
+          -webkit-appearance: none;
           &.border-red {
             border: 1px solid red;
           }
@@ -277,6 +285,7 @@ $bigScreen: 1440px;
           @include ipad() {
             width: 100%;
             font-size: 16px;
+            height: 40px;
           }
 
           @include mobile() {
@@ -319,6 +328,7 @@ $bigScreen: 1440px;
           outline: none;
           transition: border 0.6s;
           font-family: "Roboto", sans-serif;
+          -webkit-apearance: none;
           @include ipad {
             font-size: 16px;
           }

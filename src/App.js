@@ -15,10 +15,7 @@ function App(props) {
 
   return (
     <div className="App" ref={(el) => (app = el)}>
-      {props.location.pathname === "/" ||
-      props.location.pathname === "/dashboard" ? (
-        <Header />
-      ) : null}
+      {props.location.pathname === "/" ? <Header /> : null}
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route path="/(login|register)/" exact component={Auth} />

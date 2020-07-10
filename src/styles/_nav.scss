@@ -1,0 +1,125 @@
+@mixin big-screen {
+  @media (min-width: #{$bigScreen}) {
+    @content;
+  }
+}
+@mixin ipad {
+  @media (max-width: #{$ipad}) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+.nav {
+  background-color: #158a9e;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px 1px 10px 25px;
+  max-height: 70px;
+  box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.25);
+
+  .left {
+    flex-basis: 65%;
+
+    img {
+      width: 75px;
+    }
+  }
+  .right {
+    flex-basis: 33%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    height: 70px;
+
+    .name {
+      flex-basis: 53%;
+      height: auto;
+      text-align: right;
+      padding: 10px;
+      box-sizing: border-box;
+      margin-top: 20px;
+
+      span {
+        color: #fff;
+        font-family: "Roboto", sans-serif;
+        letter-spacing: 1px;
+        font-size: 1.3rem;
+        padding: 10px;
+        font-weight: 400;
+        border: 1px solid #f9b500;
+        background-color: #f9b500;
+        border-radius: 100%;
+      }
+    }
+
+    .dropdown {
+      flex-basis: 23%;
+      height: 10px;
+      margin-top: 20px;
+      position: relative;
+      margin-left: 0;
+      padding: 10px 0 10px 0;
+
+      @include ipad() {
+        margin-left: 0;
+        padding: 0;
+        margin-top: 30px;
+      }
+
+      .fas {
+        color: #f9b500;
+        cursor: pointer;
+      }
+
+      .hide {
+        display: none;
+      }
+
+      .show {
+        display: inline-block;
+      }
+      .dropdown-box {
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        border-radius: 7px;
+        position: absolute;
+        display: inline-block;
+        width: 130px;
+        right: 70px;
+        top: 50px;
+        text-align: center;
+        background-color: #fff;
+        max-height: 100px;
+        padding: 10px 0;
+        box-shadow: 0 5px 15px -35px rgba(0, 0, 0, 0.25);
+        z-index: -1;
+        transform: scale(0.2);
+
+        @include ipad() {
+          right: 15px;
+          top: 40px;
+        }
+
+        .item {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+          height: 25px;
+          padding: 8px 5px;
+          font-family: "Roboto", sans-serif;
+          letter-spacing: 1px;
+          color: #f9b500;
+          cursor: pointer;
+
+          .fas,
+          .far {
+            color: rgba(0, 0, 0, 0.5);
+            margin-right: 15px;
+          }
+        }
+      }
+    }
+  }
+}

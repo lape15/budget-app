@@ -1,7 +1,15 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
+import Nav from "./Nav";
 
 const Dashboard = () => {
-  return <h1>This is Dashboard</h1>;
+  let page;
+  if (localStorage.user) {
+    page = <Nav />;
+  } else {
+    return <Redirect to="/login" />;
+  }
+  return <div className="dashboard">{page}</div>;
 };
 
 export default Dashboard;
