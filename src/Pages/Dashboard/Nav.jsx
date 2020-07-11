@@ -37,6 +37,7 @@ const Nav = (props) => {
   const logOut = () => {
     localStorage.removeItem("user");
     setNavigate(true);
+    window.location.reload(true);
   };
 
   if (navigate) {
