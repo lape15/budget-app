@@ -99,7 +99,8 @@
         transform: scale(0.2);
 
         @include ipad() {
-          right: 0;
+          right: 2px;
+          width: 150px;
           top: 40px;
         }
 
