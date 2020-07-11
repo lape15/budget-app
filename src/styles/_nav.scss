@@ -1,0 +1,147 @@
+@mixin big-screen {
+  @media (min-width: #{$bigScreen}) {
+    @content;
+  }
+}
+@mixin ipad {
+  @media (max-width: #{$ipad}) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+.nav {
+  background-color: #158a9e;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 10px 1px 10px 25px;
+  max-height: 55px;
+  box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.25);
+
+  .left {
+    flex-basis: 65%;
+
+    img {
+      width: 65px;
+    }
+  }
+  .right {
+    flex-basis: 33%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-end;
+    align-content: center;
+
+    .name {
+      height: auto;
+      text-align: right;
+      padding: 10px;
+      box-sizing: border-box;
+
+      span {
+        color: #fff;
+        font-family: "Roboto", sans-serif;
+        letter-spacing: 1px;
+        font-size: 1.3rem;
+        padding: 10px;
+        font-weight: 400;
+        border: 1px solid #f9b500;
+        background-color: #f9b500;
+        border-radius: 100%;
+      }
+    }
+    .link {
+      font-family: "Roboto", sans-serif;
+      text-decoration: none;
+      color: black;
+      font-weight: 400;
+      margin-left: 50px;
+    }
+
+    .link:hover {
+      color: #f9b500;
+    }
+    .dropdown {
+      height: 10px;
+      position: relative;
+      margin-left: 0;
+      padding: 10px 0 10px 0;
+
+      @include ipad() {
+        margin-left: 0;
+        padding: 0;
+        margin-top: 10px;
+      }
+
+      & > .fas {
+        color: #f9b500;
+        cursor: pointer;
+      }
+
+      .dropdown-box {
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        border-radius: 7px;
+        position: absolute;
+        display: inline-block;
+        width: 180px;
+        right: 0;
+        top: 60px;
+        text-align: center;
+        background-color: #fff;
+        max-height: 100px;
+        padding: 10px 0;
+        box-shadow: 0 5px 15px -35px rgba(0, 0, 0, 0.25);
+        z-index: -1;
+        transform: scale(0.2);
+
+        @include ipad() {
+          right: 0;
+          top: 40px;
+        }
+
+        .item {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.25);
+          height: 25px;
+          padding: 8px 15px;
+          font-family: "Roboto", sans-serif;
+          letter-spacing: 1px;
+          color: #000;
+          cursor: pointer;
+          text-align: left;
+
+          .fas,
+          .far {
+            margin-right: 15px;
+          }
+        }
+        .item:hover {
+          color: #f9b500;
+        }
+      }
+    }
+  }
+}
+
+.home-header {
+  background-color: #fff;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.25);
+  padding: 10px 1px 10px 25px;
+  @include ipad() {
+    .left {
+      flex-basis: 30%;
+    }
+    .right {
+      display: inline-block;
+      text-align: left;
+      flex-basis: 55%;
+      padding-top: 30px;
+    }
+  }
+}
+.hide {
+  display: none;
+}

@@ -1,11 +1,12 @@
 import React, { useEffect, useRef } from "react";
-import Header from "./Components/Header.jsx";
+// import Header from "./Components/Header.jsx";
 import "./styles/main.scss";
 import Landing from "./Pages/Landing.jsx";
 import { TweenMax } from "gsap";
 import { Switch, Route, withRouter } from "react-router-dom";
 import Auth from "./Pages/Auth/index.jsx";
 import Dashboard from "./Pages/Dashboard/index.jsx";
+import Nav from "./Pages/Dashboard/Nav.jsx";
 
 function App(props) {
   let app = useRef(null);
@@ -15,10 +16,7 @@ function App(props) {
 
   return (
     <div className="App" ref={(el) => (app = el)}>
-      {props.location.pathname === "/" ||
-      props.location.pathname === "/dashboard" ? (
-        <Header />
-      ) : null}
+      <Nav />
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route path="/(login|register)/" exact component={Auth} />

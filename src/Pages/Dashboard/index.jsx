@@ -1,7 +1,14 @@
 import React from "react";
+import { Redirect } from "react-router-dom";
 
 const Dashboard = () => {
-  return <h1>This is Dashboard</h1>;
+  let page;
+  if (localStorage.user) {
+    page = <div>Heyyyy</div>;
+  } else {
+    return <Redirect to="/login" />;
+  }
+  return <div className="dashboard">{page}</div>;
 };
 
 export default Dashboard;

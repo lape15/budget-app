@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { ReactComponent as ReactLogo } from "../assets/landing-image.svg";
 import { TimelineLite, Power3 } from "gsap";
+import { Link } from "react-router-dom";
 
 const Landing = () => {
   let tl = new TimelineLite({ delay: 0.8 });
@@ -44,7 +45,9 @@ const Landing = () => {
         </span>
 
         <div className="btn-box">
-          <button>Register now</button>
+          <Link to="/register">
+            <button>Register now</button>
+          </Link>
         </div>
       </div>
       <div className="right">
