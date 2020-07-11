@@ -54,7 +54,17 @@
         border-radius: 100%;
       }
     }
+    .link {
+      font-family: "Roboto", sans-serif;
+      text-decoration: none;
+      color: black;
+      font-weight: 400;
+      margin-left: 50px;
+    }
 
+    .link:hover {
+      color: #f9b500;
+    }
     .dropdown {
       height: 10px;
       position: relative;
@@ -105,7 +115,6 @@
 
           .fas,
           .far {
-            // color: rgba(0, 0, 0, 0.5);
             margin-right: 15px;
           }
         }
@@ -115,4 +124,11 @@
       }
     }
   }
+}
+
+.home {
+  background-color: #fff;
+}
+.hide {
+  display: none;
 }

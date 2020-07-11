@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import logo from "../../assets/budget-it.png";
 import { gsap } from "gsap";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter, NavLink } from "react-router-dom";
 
-const Nav = () => {
+const Nav = (props) => {
   const [toggle, setToggle] = useState(true);
   const [navigate, setNavigate] = useState(false);
 
@@ -44,32 +44,57 @@ const Nav = () => {
   }
 
   return (
-    <nav className="nav">
+    <nav
+      className={`nav ${
+        props.location.pathname === "/"
+          ? "home"
+          : props.location.pathname === "/login" ||
+            props.location.pathname === "/register"
+          ? "hide"
+          : "nav"
+      }`}
+    >
       <div className="left">
         {" "}
         <img src={logo} alt="BudgetIt logo" />
       </div>
       <div className="right">
-        <div className="name">
-          <span>
-            {first.toUpperCase()}
-            {second.toUpperCase()}
-          </span>
-        </div>
-        <div className="dropdown">
-          <i className="fas fa-chevron-circle-down" onClick={handleToggle}></i>
-          <div className="dropdown-box">
-            <div className="item">
-              <i className="far fa-bookmark"></i> Library
-            </div>
-            <div className="item" onClick={logOut}>
-              <i className="fas fa-power-off"></i>Logout
+        {!user ? (
+          <NavLink to="/login" className="link">
+            Register
+          </NavLink>
+        ) : (
+          <div className="name">
+            <span>
+              {first.toUpperCase()}
+              {second.toUpperCase()}{" "}
+            </span>
+          </div>
+        )}
+
+        {!user ? (
+          <NavLink to="/login" className="link">
+            Login
+          </NavLink>
+        ) : (
+          <div className="dropdown">
+            <i
+              className="fas fa-chevron-circle-down"
+              onClick={handleToggle}
+            ></i>
+            <div className="dropdown-box">
+              <div className="item">
+                <i className="far fa-bookmark"></i> Library
+              </div>
+              <div className="item" onClick={logOut}>
+                <i className="fas fa-power-off"></i>Logout
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </nav>
   );
 };
 
-export default Nav;
+export default withRouter(Nav);
