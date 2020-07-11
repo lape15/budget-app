@@ -47,7 +47,7 @@ const Nav = (props) => {
     <nav
       className={`nav ${
         props.location.pathname === "/"
-          ? "home"
+          ? "home-header"
           : props.location.pathname === "/login" ||
             props.location.pathname === "/register"
           ? "hide"
