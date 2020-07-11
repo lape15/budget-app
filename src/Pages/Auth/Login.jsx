@@ -4,23 +4,19 @@ import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { TimelineLite, Power3 } from "gsap";
 import { makeAuthenticatedApiCall } from "../Api.js";
+import { withRouter } from "react-router-dom";
+
 
 const path = "sessions";
 
 const Login = (props) => {
   const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState(null);
   const [authenticationError, setAuthenticationError] = useState(null);
   const [tl] = useState(
     new TimelineLite({
       paused: true,
     })
   );
-
-  if (user) {
-    props.history.push("/dashboard");
-    localStorage.setItem("user", JSON.stringify(user));
-  }
 
   useEffect(() => {
     tl.from(".login", 3, { y: 30, ease: Power3.easeOut });
@@ -56,7 +52,8 @@ const Login = (props) => {
       responses
         .then((response) => {
           setLoading(false);
-          setUser(response.data.payload);
+          localStorage.setItem("user", JSON.stringify(response.data.payload))
+          props.history.push("/dashboard");
         })
         .catch((error) => {
           setLoading(false);
@@ -126,4 +123,4 @@ const Login = (props) => {
     </form>
   );
 };
-export default Login;
+export default withRouter(Login);
