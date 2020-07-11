@@ -1,11 +1,10 @@
 import React, { useState } from "react";
 import logo from "../../assets/budget-it.png";
 import { gsap } from "gsap";
-import { Redirect, withRouter, NavLink } from "react-router-dom";
+import { withRouter, NavLink } from "react-router-dom";
 
 const Nav = (props) => {
   const [toggle, setToggle] = useState(true);
-  const [navigate, setNavigate] = useState(false);
 
   let user;
   let first;
@@ -36,26 +35,25 @@ const Nav = (props) => {
 
   const logOut = () => {
     localStorage.removeItem("user");
-    setNavigate(true);
+    props.history.push("/login")
   };
-
-  if (navigate) {
-    return <Redirect to="/login" push={true} />;
+  
+  const switchNavClass = () => {
+    const { pathname } = props.location;
+    if(pathname === "/") {
+      return "home-header";
+    } else if (pathname === "/login" || pathname === "/register") {
+      return "hide";
+    } else {
+      return "";
+    }
   }
 
   return (
     <nav
-      className={`nav ${
-        props.location.pathname === "/"
-          ? "home-header"
-          : props.location.pathname === "/login" ||
-            props.location.pathname === "/register"
-          ? "hide"
-          : "nav"
-      }`}
+      className={`nav ${switchNavClass()}`}
     >
       <div className="left">
-        {" "}
         <img src={logo} alt="BudgetIt logo" />
       </div>
       <div className="right">
@@ -67,7 +65,7 @@ const Nav = (props) => {
           <div className="name">
             <span>
               {first.toUpperCase()}
-              {second.toUpperCase()}{" "}
+              {second.toUpperCase()}
             </span>
           </div>
         )}
