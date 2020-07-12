@@ -60,6 +60,9 @@
       color: black;
       font-weight: 400;
       margin-left: 50px;
+      @include ipad() {
+        margin-left: 20px;
+      }
     }
 
     .link:hover {
@@ -140,9 +143,10 @@
     }
     .right {
       display: inline-block;
-      text-align: left;
-      flex-basis: 55%;
+      text-align: right;
+      flex-basis: 60%;
       padding-top: 30px;
+      margin-left: 10px;
     }
   }
 }
