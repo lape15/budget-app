@@ -34,16 +34,12 @@ const NewBudget = (props) => {
         })
         .catch((error) => {
           setLoading(false);
-          const {
-            response: {
-              data: { name },
-            },
-          } = error;
+
           const {
             response: { data },
           } = error;
           for (const key in data) {
-            setCreateError(key + " " + name[0]);
+            setCreateError(key + " " + data[key][0]);
           }
         });
     },
