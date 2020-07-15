@@ -81,13 +81,17 @@ const Nav = (props) => {
             <div className="dropdown-box">
               <div className="item">
                 {" "}
-                <Link to="/dashboard/create-budget" className="links">
+                <Link
+                  to="/dashboard/create-budget"
+                  className="links"
+                  onClick={handleToggle}
+                >
                   <i className="fas fa-plus"></i> New budget{" "}
                 </Link>{" "}
               </div>
 
               <div className="item">
-                <Link to="/dashboard" className="links">
+                <Link to="/dashboard" className="links" onClick={handleToggle}>
                   <i className="far fa-bookmark"></i> Library{" "}
                 </Link>
               </div>
