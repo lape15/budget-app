@@ -11,11 +11,11 @@ function App(props) {
   let app = useRef(null);
 
   useEffect(() => {
+    TweenMax.to(app, 0, { css: { visibility: "visible" } });
     if (localStorage.user) {
       props.history.push("/dashboard");
     }
-    TweenMax.to(app, 0, { css: { visibility: "visible" } });
-  });
+  }, [props.history]);
 
   return (
     <div className="App" ref={(el) => (app = el)}>
