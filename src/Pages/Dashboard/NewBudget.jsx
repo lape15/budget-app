@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { makeBudgetCall } from "../Api.js";
+import { makeAuthenticatedApiCall } from "../Api.js";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 
@@ -19,16 +19,16 @@ const NewBudget = (props) => {
     }),
 
     onSubmit: (values) => {
+      const { name, income } = values;
       setLoading(true);
-      const responses = makeBudgetCall("post", {
-        name: values.name,
-        income: values.income,
+      const responses = makeAuthenticatedApiCall("post", "budgets", {
+        name,
+        income,
       });
 
       responses
-        .then((response) => {
+        .then(() => {
           setLoading(false);
-
           props.history.push("/dashboard");
         })
         .catch((error) => {

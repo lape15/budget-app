@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { makeBudgetCall } from "../Api.js";
+import { makeAuthenticatedApiCall } from "../Api.js";
 import CardBox from "./CardBox";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ const Budgets = () => {
   const [loading, setLoading] = useState(false);
   useEffect(() => {
     setLoading(true);
-    const responses = makeBudgetCall("get");
+    const responses = makeAuthenticatedApiCall("get", "budgets");
     responses
       .then((response) => {
         setLoading(false);

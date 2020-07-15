@@ -34,11 +34,12 @@ $bigScreen: 1440px;
     padding: 10px 15px;
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     margin-top: 5px;
     text-align: left;
     background-color: #fff;
+    align-self: start;
 
     .view {
       width: 90%;
@@ -125,7 +126,7 @@ $bigScreen: 1440px;
   }
 
   .list-box {
-    width: 80%;
+    width: 95%;
     display: inline-block !important;
     background-color: white;
     box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.07);

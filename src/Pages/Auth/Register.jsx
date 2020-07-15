@@ -4,7 +4,7 @@ import { currency } from "./currency";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { TimelineLite, Power3 } from "gsap";
-import { makeAuthenticatedApiCall } from "../Api.js";
+import { makeUnAuthenticatedApiCall } from "../Api.js";
 
 const path = "users";
 
@@ -80,11 +80,11 @@ const Register = (props) => {
         },
       };
 
-      const responses = makeAuthenticatedApiCall("post", path, users);
+      const responses = makeUnAuthenticatedApiCall("post", path, users);
       responses
         .then((response) => {
           setLoading(false);
-          localStorage.setItem("user", JSON.stringify(response.data.payload))
+          localStorage.setItem("user", JSON.stringify(response.data.payload));
           props.history.push("/dashboard");
         })
         .catch((error) => {

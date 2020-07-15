@@ -5,7 +5,8 @@ if (localStorage.user) {
   user = JSON.parse(localStorage.getItem("user"));
   token = user.token;
 }
-const makeAuthenticatedApiCall = (method, path, data) => {
+
+const makeUnAuthenticatedApiCall = (method, path, data) => {
   return axios({
     method: method,
     url: `https://atumaatu.herokuapp.com/v1/${path}/`,
@@ -16,32 +17,16 @@ const makeAuthenticatedApiCall = (method, path, data) => {
   });
 };
 
-const makeBudgetCall = (method, data) => {
-  switch (method) {
-    case "post":
-      return axios({
-        method: method,
-        url: "https://atumaatu.herokuapp.com/v1/budgets",
-        data: JSON.stringify(data),
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-    case "get":
-      return axios({
-        method: method,
-        url: "https://atumaatu.herokuapp.com/v1/budgets",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-    default:
-      return;
-  }
+const makeAuthenticatedApiCall = (method, path, data) => {
+  return axios({
+    method: method,
+    url: `https://atumaatu.herokuapp.com/v1/${path}`,
+    data: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
 };
 
-export { makeAuthenticatedApiCall, makeBudgetCall };
+export { makeUnAuthenticatedApiCall, makeAuthenticatedApiCall };

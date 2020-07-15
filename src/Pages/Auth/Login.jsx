@@ -3,9 +3,8 @@ import { useFormik } from "formik";
 import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import { TimelineLite, Power3 } from "gsap";
-import { makeAuthenticatedApiCall } from "../Api.js";
+import { makeUnAuthenticatedApiCall } from "../Api.js";
 import { withRouter } from "react-router-dom";
-
 
 const path = "sessions";
 
@@ -44,7 +43,7 @@ const Login = (props) => {
 
     onSubmit: (values) => {
       setLoading(true);
-      const responses = makeAuthenticatedApiCall("post", path, {
+      const responses = makeUnAuthenticatedApiCall("post", path, {
         email: values.email,
         password: values.password,
       });
@@ -52,7 +51,7 @@ const Login = (props) => {
       responses
         .then((response) => {
           setLoading(false);
-          localStorage.setItem("user", JSON.stringify(response.data.payload))
+          localStorage.setItem("user", JSON.stringify(response.data.payload));
           props.history.push("/dashboard");
         })
         .catch((error) => {
