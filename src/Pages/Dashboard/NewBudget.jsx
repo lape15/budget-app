@@ -65,7 +65,7 @@ const NewBudget = (props) => {
             />
           </div>
           <div className="w-100">
-            <button type="submit" disabled={loading}>
+            <button type="submit" disabled={loading} className="btn1">
               Create budget {loading && <i className="fas fa-spinner"></i>}
             </button>
           </div>
