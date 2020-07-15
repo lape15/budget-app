@@ -5,6 +5,7 @@ import { useFormik } from "formik";
 
 const NewBudget = (props) => {
   const [loading, setLoading] = useState(false);
+  const [createError, setCreateError] = useState(null);
 
   const formik = useFormik({
     initialValues: {
@@ -33,7 +34,12 @@ const NewBudget = (props) => {
         })
         .catch((error) => {
           setLoading(false);
-          console.log({ error });
+          const {
+            response: {
+              data: { name },
+            },
+          } = error;
+          setCreateError(name[0]);
         });
     },
   });
@@ -42,6 +48,9 @@ const NewBudget = (props) => {
     <div className="create-box">
       <div className="form-box">
         <form onSubmit={formik.handleSubmit}>
+          <div className="w-100 error-box">
+            {createError ? <span>{createError}</span> : null}{" "}
+          </div>
           <div className="w-100">
             <label className={`${formik.values.name ? "shrink" : ""}`}>
               Name

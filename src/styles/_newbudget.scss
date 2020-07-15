@@ -22,6 +22,16 @@
         position: relative;
         margin-bottom: 20px;
 
+        &.error-box {
+          span {
+            color: red;
+            font-family: "Roboto", sans-serif;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            font-weight: 500;
+          }
+        }
+
         label {
           font-family: "Roboto", sans-serif;
           font-size: 14px;
