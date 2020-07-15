@@ -9,7 +9,11 @@ import Nav from "./Pages/Dashboard/Nav.jsx";
 
 function App(props) {
   let app = useRef(null);
+
   useEffect(() => {
+    if (localStorage.user) {
+      props.history.push("/dashboard");
+    }
     TweenMax.to(app, 0, { css: { visibility: "visible" } });
   });
 

@@ -39,6 +39,7 @@ const NewBudget = (props) => {
               data: { name },
             },
           } = error;
+
           setCreateError(name[0]);
         });
     },
@@ -49,7 +50,7 @@ const NewBudget = (props) => {
       <div className="form-box">
         <form onSubmit={formik.handleSubmit}>
           <div className="w-100 error-box">
-            {createError ? <span>{createError}</span> : null}{" "}
+            {createError ? <span>Name {createError}</span> : null}{" "}
           </div>
           <div className="w-100">
             <label className={`${formik.values.name ? "shrink" : ""}`}>
