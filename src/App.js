@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-// import Header from "./Components/Header.jsx";
 import "./styles/main.scss";
 import Landing from "./Pages/Landing.jsx";
 import { TweenMax } from "gsap";
@@ -20,7 +19,7 @@ function App(props) {
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route path="/(login|register)/" exact component={Auth} />
-        <Route exact path="/dashboard" component={Dashboard} />
+        <Route path="/dashboard" component={Dashboard} />
       </Switch>
     </div>
   );

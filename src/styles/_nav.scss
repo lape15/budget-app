@@ -21,6 +21,7 @@
   padding: 10px 1px 10px 25px;
   max-height: 55px;
   box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.25);
+  z-index: 100;
 
   .left {
     flex-basis: 65%;
@@ -101,7 +102,7 @@
         top: 60px;
         text-align: center;
         background-color: #fff;
-        max-height: 100px;
+        max-height: 120px;
         padding: 10px 0;
         box-shadow: 0 5px 15px -35px rgba(0, 0, 0, 0.25);
         z-index: -1;
@@ -110,7 +111,7 @@
         @include ipad() {
           right: 2px;
           top: 40px;
-          width: 150px;
+          width: 180px;
         }
 
         .item {
@@ -127,8 +128,16 @@
           .far {
             margin-right: 15px;
           }
+          .links {
+            text-decoration: none;
+            font-family: "Roboto", sans-serif;
+            letter-spacing: 1px;
+            color: #000;
+            cursor: pointer;
+          }
         }
-        .item:hover {
+        .item:hover,
+        .links:hover {
           color: #f9b500;
         }
       }

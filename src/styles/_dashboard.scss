@@ -1,4 +1,73 @@
+$mobile: 300px;
+$ipad: 768px;
+$bigScreen: 1440px;
+
+@mixin big-screen {
+  @media (min-width: #{$bigScreen}) {
+    @content;
+  }
+}
+@mixin ipad {
+  @media (max-width: #{$ipad}) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
 .dashboard {
-  min-height: 90vh;
+  height: calc(83vh - 30px);
   background-color: #fff;
+  padding: 20px 70px 20px 140px;
+  overflow: hidden;
+  overflow-y: scroll;
+  margin-top: 5px;
+  scrollbar-color: #f9b500 lighten(#f9b500, 40%);
+  scrollbar-width: auto;
+  @include ipad() {
+    padding: 5px;
+  }
+  .budgets {
+    .message-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 400px;
+      font-family: "Roboto", sans-serif;
+      font-size: 24px;
+      letter-spacing: 1px;
+      .link {
+        color: #f9b500;
+        font-weight: 700;
+      }
+      @include ipad() {
+        display: block;
+        text-align: center;
+        padding: 40px 5px;
+      }
+    }
+  }
+}
+.dashboard::-webkit-scrollbar {
+  width: 12px;
+  background-color: lighten(#f9b500, 40%);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+.dashboard::-webkit-scrollbar-thumb {
+  background-color: #f9b500;
+  border-radius: 6px;
+  box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+.dashboard::-moz-scrollbar {
+  width: 12px;
+  background-color: lighten(#f9b500, 40%);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+.dashboard::-moz-scrollbar-thumb {
+  background-color: #f9b500;
+  border-radius: 6px;
+  box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.2);
 }
