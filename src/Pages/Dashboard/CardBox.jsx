@@ -16,7 +16,7 @@ const CardBox = ({ items }) => {
               List view
             </i>
           ) : (
-            <i class="fas fa-square-full" onClick={handleView}>
+            <i className="fas fa-square-full" onClick={handleView}>
               Card view
             </i>
           )}
