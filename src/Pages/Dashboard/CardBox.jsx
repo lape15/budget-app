@@ -12,7 +12,7 @@ const CardBox = ({ items }) => {
       <div className={`${view ? "card-box" : "list-box"}`}>
         <div className="view">
           {view ? (
-            <i class="fas fa-list" onClick={handleView}>
+            <i className="fas fa-list" onClick={handleView}>
               List view
             </i>
           ) : (
