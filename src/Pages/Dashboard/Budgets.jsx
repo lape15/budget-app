@@ -34,11 +34,11 @@ const Budgets = () => {
         <CardBox items={budgets} />
       ) : (
         <div className="message-box">
-          You currently have no budget.{" "}
+          You currently have no budget{" "}
           <Link to="/dashboard/create-budget" className="link">
             Click
           </Link>
-          <span>to create a budget</span>
+          <span>to create a budget.</span>
         </div>
       )}
     </div>
