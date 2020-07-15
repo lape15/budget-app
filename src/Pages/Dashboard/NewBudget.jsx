@@ -50,8 +50,20 @@ const NewBudget = (props) => {
               type="text"
               name="name"
               {...formik.getFieldProps("name")}
-              className={`${formik.values.name ? "border-green" : ""}`}
+              className={`${
+                formik.values.name
+                  ? "border-green"
+                  : formik.touched.name && formik.errors.name
+                  ? "border-red"
+                  : ""
+              }`}
             />
+            {formik.touched.name && formik.errors.name ? (
+              <span className="error">
+                <i className="fas fa-times"></i>
+                {formik.errors.name}
+              </span>
+            ) : null}
           </div>
           <div className="w-100">
             <label className={`${formik.values.income ? "shrink" : ""}`}>
@@ -61,8 +73,20 @@ const NewBudget = (props) => {
               type="number"
               name="income"
               {...formik.getFieldProps("income")}
-              className={`${formik.values.number ? "border-green" : ""}`}
+              className={`${
+                formik.values.income
+                  ? "border-green"
+                  : formik.touched.income && formik.errors.income
+                  ? "border-red"
+                  : ""
+              }`}
             />
+            {formik.touched.income && formik.errors.income ? (
+              <span className="error">
+                <i className="fas fa-times"></i>
+                {formik.errors.income}
+              </span>
+            ) : null}
           </div>
           <div className="w-100">
             <button type="submit" disabled={loading} className="btn1">
