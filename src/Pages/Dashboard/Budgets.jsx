@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { makeAuthenticatedApiCall } from "../Api.js";
-import CardBox from "./CardBox";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
-
+import CardConatiner from "./CardContainer";
 const Budgets = () => {
   const [budgets, setBudgets] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -17,7 +16,7 @@ const Budgets = () => {
       })
       .catch((error) => {
         console.log(error);
-      });
+      }, []);
 
     return () => {
       setLoading(false);
@@ -31,7 +30,7 @@ const Budgets = () => {
       {loading ? (
         <Loader />
       ) : budgets.length > 0 ? (
-        <CardBox items={budgets} />
+        <CardConatiner items={budgets} setBudgets={setBudgets} />
       ) : (
         <div className="message-box">
           You currently have no budget{" "}

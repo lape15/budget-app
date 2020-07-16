@@ -30,6 +30,7 @@ $bigScreen: 1440px;
 .box {
   padding: 10px;
   text-align: center;
+
   .card-box {
     padding: 10px 15px;
     display: flex;
@@ -55,6 +56,7 @@ $bigScreen: 1440px;
         font-weight: 700;
       }
     }
+
     .title {
       display: none;
     }
@@ -78,6 +80,17 @@ $bigScreen: 1440px;
         float: right;
         cursor: pointer;
         font-weight: 600;
+        margin-right: 10px;
+
+        &.close {
+          font-size: 22px;
+          color: #f9b500;
+        }
+
+        &.edit {
+          margin-left: 4px;
+          color: #f9b500;
+        }
       }
       .desc {
         padding: 5px;

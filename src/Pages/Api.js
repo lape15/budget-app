@@ -29,4 +29,20 @@ const makeAuthenticatedApiCall = (method, path, data) => {
   });
 };
 
-export { makeUnAuthenticatedApiCall, makeAuthenticatedApiCall };
+const makeUpdateApiCall = (method, budget_id, data) => {
+  return axios({
+    method: method,
+    url: `https://atumaatu.herokuapp.com/v1/budgets/${budget_id}`,
+    data: JSON.stringify(data),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};
+
+export {
+  makeUnAuthenticatedApiCall,
+  makeAuthenticatedApiCall,
+  makeUpdateApiCall,
+};
