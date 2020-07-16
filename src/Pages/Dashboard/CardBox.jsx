@@ -20,7 +20,7 @@ const CardBox = ({ item, setBudgets }) => {
       {edit ? (
         <>
           <i
-            className="fas fa-trash-alt"
+            className="fas fa-trash-alt trash"
             onClick={() => deleteBudget(item.id)}
           ></i>
           <i className="fas fa-edit edit" onClick={handleEdit}></i>

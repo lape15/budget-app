@@ -80,7 +80,7 @@ $bigScreen: 1440px;
         float: right;
         cursor: pointer;
         font-weight: 600;
-        margin-right: 10px;
+        margin-right: 5px;
 
         &.close {
           font-size: 22px;
@@ -88,8 +88,11 @@ $bigScreen: 1440px;
         }
 
         &.edit {
-          margin-left: 4px;
+          margin-left: 2px;
           color: #f9b500;
+        }
+        &.trash {
+          margin-left: 12px;
         }
       }
       .desc {
