@@ -1,5 +1,4 @@
 import React, { useEffect, useRef } from "react";
-// import Header from "./Components/Header.jsx";
 import "./styles/main.scss";
 import Landing from "./Pages/Landing.jsx";
 import { TweenMax } from "gsap";
@@ -10,9 +9,13 @@ import Nav from "./Pages/Dashboard/Nav.jsx";
 
 function App(props) {
   let app = useRef(null);
+
   useEffect(() => {
     TweenMax.to(app, 0, { css: { visibility: "visible" } });
-  });
+    if (localStorage.user) {
+      props.history.push("/dashboard");
+    }
+  }, [props.history]);
 
   return (
     <div className="App" ref={(el) => (app = el)}>
@@ -20,7 +23,7 @@ function App(props) {
       <Switch>
         <Route exact path="/" component={Landing} />
         <Route path="/(login|register)/" exact component={Auth} />
-        <Route exact path="/dashboard" component={Dashboard} />
+        <Route path="/dashboard" component={Dashboard} />
       </Switch>
     </div>
   );

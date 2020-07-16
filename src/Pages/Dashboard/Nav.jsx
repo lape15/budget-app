@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../../assets/budget-it.png";
 import { gsap } from "gsap";
-import { withRouter, NavLink } from "react-router-dom";
+import { withRouter, NavLink, Link } from "react-router-dom";
 
 const Nav = (props) => {
   const [toggle, setToggle] = useState(true);
@@ -35,30 +35,28 @@ const Nav = (props) => {
 
   const logOut = () => {
     localStorage.removeItem("user");
-    props.history.push("/login")
+    props.history.push("/login");
   };
-  
+
   const switchNavClass = () => {
     const { pathname } = props.location;
-    if(pathname === "/") {
+    if (pathname === "/") {
       return "home-header";
     } else if (pathname === "/login" || pathname === "/register") {
       return "hide";
     } else {
       return "";
     }
-  }
+  };
 
   return (
-    <nav
-      className={`nav ${switchNavClass()}`}
-    >
+    <nav className={`nav ${switchNavClass()}`}>
       <div className="left">
         <img src={logo} alt="BudgetIt logo" />
       </div>
       <div className="right">
         {!user ? (
-          <NavLink to="/login" className="link">
+          <NavLink to="/register" className="link">
             Register
           </NavLink>
         ) : (
@@ -82,7 +80,20 @@ const Nav = (props) => {
             ></i>
             <div className="dropdown-box">
               <div className="item">
-                <i className="far fa-bookmark"></i> Library
+                {" "}
+                <Link
+                  to="/dashboard/create-budget"
+                  className="links"
+                  onClick={handleToggle}
+                >
+                  <i className="fas fa-plus"></i> New budget{" "}
+                </Link>{" "}
+              </div>
+
+              <div className="item">
+                <Link to="/dashboard" className="links" onClick={handleToggle}>
+                  <i className="far fa-bookmark"></i> Library{" "}
+                </Link>
               </div>
               <div className="item" onClick={logOut}>
                 <i className="fas fa-power-off"></i>Logout
