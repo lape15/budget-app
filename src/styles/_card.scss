@@ -30,6 +30,7 @@ $bigScreen: 1440px;
 .box {
   padding: 10px;
   text-align: center;
+
   .card-box {
     padding: 10px 15px;
     display: flex;
@@ -55,6 +56,7 @@ $bigScreen: 1440px;
         font-weight: 700;
       }
     }
+
     .title {
       display: none;
     }
@@ -72,12 +74,27 @@ $bigScreen: 1440px;
       cursor: pointer;
       margin-left: 5px;
       margin-right: 5px;
+      transform-origin: center;
 
       .fas {
         color: #158a9e;
         float: right;
         cursor: pointer;
         font-weight: 600;
+        margin-right: 5px;
+
+        &.close {
+          font-size: 22px;
+          color: #f9b500;
+        }
+
+        &.edit {
+          margin-left: 2px;
+          color: #f9b500;
+        }
+        &.trash {
+          margin-left: 12px;
+        }
       }
       .desc {
         padding: 5px;
