@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import EditBudget from "./EditBudget";
-import { makeUpdateApiCall } from "../Api.js";
+import { makeAuthenticatedApiCall } from "../Api.js";
 
 const CardBox = ({ item, setBudgets }) => {
   const [edit, setEdit] = useState(true);
@@ -9,7 +9,7 @@ const CardBox = ({ item, setBudgets }) => {
     setEdit(!edit);
   };
   const deleteBudget = (id) => {
-    let responses = makeUpdateApiCall("delete", id);
+    let responses = makeAuthenticatedApiCall("delete", `budgets/${id}`);
     responses.then((response) => {
       setBudgets(response.data.payload.budgets);
     });

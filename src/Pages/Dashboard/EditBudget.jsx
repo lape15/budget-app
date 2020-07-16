@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
-import { makeUpdateApiCall } from "../Api.js";
+import { makeUpdateApiCall, makeAuthenticatedApiCall } from "../Api.js";
 
 const EditBudget = (props) => {
   const [loading, setLoading] = useState(false);
@@ -16,7 +16,7 @@ const EditBudget = (props) => {
     onSubmit: (values) => {
       const { name, income } = values;
       setLoading(true);
-      const responses = makeUpdateApiCall("put", props.id, {
+      const responses = makeAuthenticatedApiCall("put", `budgets/${props.id}`, {
         name,
         income,
       });
