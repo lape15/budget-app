@@ -56,7 +56,7 @@ const Nav = (props) => {
       </div>
       <div className="right">
         {!user ? (
-          <NavLink to="/login" className="link">
+          <NavLink to="/register" className="link">
             Register
           </NavLink>
         ) : (
