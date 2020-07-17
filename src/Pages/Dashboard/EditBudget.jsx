@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useFormik } from "formik";
-import { makeUpdateApiCall, makeAuthenticatedApiCall } from "../Api.js";
+
+import { makeAuthenticatedApiCall } from "../Api.js";
+
 
 const EditBudget = (props) => {
   const [loading, setLoading] = useState(false);

@@ -70,7 +70,7 @@ $bigScreen: 1440px;
       padding: 10px 15px;
       height: 230px;
       margin-top: 20px;
-      transition: transform 1s;
+      transition: transform 0.3s;
       cursor: pointer;
       margin-left: 5px;
       margin-right: 5px;
@@ -127,7 +127,7 @@ $bigScreen: 1440px;
         flex-basis: 60%;
         margin-left: 0;
         margin-right: 0;
-        height: 330px;
+        height: 270px;
       }
       @include mobile() {
         flex-basis: 100%;
@@ -217,7 +217,7 @@ $bigScreen: 1440px;
       height: auto;
       cursor: pointer;
       display: inline-flex;
-      transition: all 2s;
+      transition: all 0.3s;
 
       .fas {
         color: #f9b500;
