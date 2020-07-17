@@ -15,7 +15,7 @@ function App(props) {
     if (localStorage.user) {
       props.history.push("/dashboard");
     }
-  }, [props.history]);
+  }, []);
 
   return (
     <div className="App" ref={(el) => (app = el)}>
