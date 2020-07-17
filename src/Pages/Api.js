@@ -1,13 +1,4 @@
 import axios from "axios";
-// let user;
-// let token;
-
-// console.log(localStorage.getItem("user"));
-
-// if (localStorage.user) {
-//   user = JSON.parse(localStorage.getItem("user"));
-//   token = user.token;
-// }
 
 const makeUnAuthenticatedApiCall = (method, path, data) => {
   return axios({
