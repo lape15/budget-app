@@ -124,10 +124,10 @@ $bigScreen: 1440px;
       }
       @include ipad() {
         margin-bottom: 10px;
-        flex-basis: 60%;
+        flex-basis: 65%;
         margin-left: 0;
         margin-right: 0;
-        height: 270px;
+        height: 265px;
       }
       @include mobile() {
         flex-basis: 100%;

@@ -16,7 +16,7 @@ const Budgets = () => {
       })
       .catch((error) => {
         console.log(error);
-      }, []);
+      });
 
     return () => {
       setLoading(false);
