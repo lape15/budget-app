@@ -35,7 +35,7 @@ $bigScreen: 1440px;
     right: 0;
     left: 0;
     z-index: 80;
-    background-color: #f2f2f2;
+
     height: 100%;
     display: flex;
     justify-content: center;
@@ -43,7 +43,7 @@ $bigScreen: 1440px;
     box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.25);
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: saturate(180%) blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
     cursor: pointer;
 
     .btn-box {
@@ -69,6 +69,7 @@ $bigScreen: 1440px;
         cursor: pointer;
         position: relative;
         transition: color 0.4s linear;
+
         @include ipad() {
           padding: 5px;
         }
@@ -81,7 +82,7 @@ $bigScreen: 1440px;
     }
 
     @include firefox-only() {
-      background: rgba(0, 0, 0, 0.2);
+      background: #f2f2f2;
       backdrop-filter: saturate(180%) blur(10px);
       backdrop-filter: blur(10px);
     }
@@ -94,14 +95,6 @@ $bigScreen: 1440px;
       background-color: #fff;
       position: relative;
 
-      .fas {
-        position: absolute;
-        right: 0;
-        top: 0;
-        transform: translateX(-4px);
-        transform: translateY(4px);
-        font-size: 20px;
-      }
       .w-100 {
         width: 100%;
         position: relative;
@@ -174,6 +167,7 @@ $bigScreen: 1440px;
           letter-spacing: 1px;
           border: 1px solid #158a9e;
           font-family: "Roboto", sans-serif;
+          width: max-content;
           cursor: pointer;
           position: relative;
           transition: color 0.4s linear;
@@ -204,6 +198,6 @@ $bigScreen: 1440px;
 @-moz-document url-prefix() {
   .add-box {
     background: rgba(255, 255, 255, 0.3);
-    backdrop-filter: saturate(180%) blur(10px);
+    backdrop-filter: url(../assets/budget-it.png) saturate(180%) blur(10px);
   }
 }

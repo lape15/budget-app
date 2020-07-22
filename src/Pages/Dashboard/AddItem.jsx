@@ -3,44 +3,41 @@ import * as Yup from "yup";
 import { useFormik } from "formik";
 import { makeAuthenticatedApiCall } from "../Api.js";
 
-const AddItem = ({ handleToggleItem, id }) => {
+const AddItem = ({ handleToggleItem, id, setBudget }) => {
   const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
       name: "",
-      budgetedCost: "",
+      budgeted_cost: "",
     },
 
     validationSchema: Yup.object({
       name: Yup.string().required("Cannot be blank"),
 
-      budgetedCost: Yup.number().required("Cannot be blank"),
+      budgeted_cost: Yup.number().required("Cannot be blank"),
     }),
 
     onSubmit: (values) => {
-      const { name, budgetedCost } = values;
-      console.log(name, budgetedCost);
-      //   setLoading(true);
-      //   const responses = makeAuthenticatedApiCall("post", "budgets", {
-      //     name,
-      //     income,
-      //   });
+      let items = [];
+      items.push(values);
+      setLoading(true);
 
-      //   responses
-      //     .then(() => {
-      //       setLoading(false);
-      //        })
-      //     .catch((error) => {
-      //       setLoading(false);
+      const responses = makeAuthenticatedApiCall("post", "budget_memberships", {
+        id,
+        items,
+      });
 
-      //       const {
-      //         response: { data },
-      //       } = error;
-      //       for (const key in data) {
-      //         setCreateError(key + " " + data[key][0]);
-      //       }
-      //     });
+      responses
+        .then((response) => {
+          setLoading(false);
+          setBudget(response.data.payload);
+          handleToggleItem();
+        })
+        .catch((error) => {
+          setLoading(false);
+          console.log({ error });
+        });
     },
   });
 
@@ -75,22 +72,22 @@ const AddItem = ({ handleToggleItem, id }) => {
           ) : null}
         </div>
         <div className="w-100">
-          <label className={`${formik.values.budgetedCost ? "shrink" : ""}`}>
+          <label className={`${formik.values.budgeted_cost ? "shrink" : ""}`}>
             Budgeted_cost
           </label>
           <input
             type="number"
-            name="budgetedCost"
-            {...formik.getFieldProps("budgetedCost")}
+            name="budgeted_cost"
+            {...formik.getFieldProps("budgeted_cost")}
             className={`${
-              formik.values.budgetedCost
+              formik.values.budgeted_cost
                 ? "border-green"
-                : formik.touched.budgetedCost && formik.errors.budgetedCost
+                : formik.touched.budgeted_cost && formik.errors.budgeted_cost
                 ? "border-red"
                 : ""
             }`}
           />
-          {formik.touched.budgetedCost && formik.errors.budgetedCost ? (
+          {formik.touched.budgeted_cost && formik.errors.budgeted_cost ? (
             <span className="error">
               <i className="fas fa-times"></i>
               {formik.errors.name}
