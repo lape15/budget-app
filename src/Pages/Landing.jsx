@@ -3,10 +3,14 @@ import { ReactComponent as ReactLogo } from "../assets/landing-image.svg";
 import { TimelineLite, Power3 } from "gsap";
 import { Link } from "react-router-dom";
 
-const Landing = () => {
+const Landing = (props) => {
   let tl = new TimelineLite({ delay: 0.8 });
 
   useEffect(() => {
+    if (localStorage.user) {
+      return props.history.push("/dashboard");
+    }
+
     tl.from(".lady", 3, { y: 1280, ease: Power3.easeOut }, "Start");
 
     tl.staggerFrom(

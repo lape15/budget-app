@@ -2,14 +2,30 @@ import React from "react";
 import { Redirect, Route, Switch } from "react-router-dom";
 import NewBudget from "./NewBudget";
 import Budgets from "./Budgets";
+import SingleBudget from "./SingleBudget";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   let page;
   if (localStorage.user) {
     page = (
       <Switch>
-        <Route path="/dashboard" exact component={Budgets} />
-        <Route path="/dashboard/create-budget" exact component={NewBudget} />
+        <Route
+          path="/dashboard"
+          exact
+          render={(props) => <Budgets {...props} />}
+        />
+
+        <Route
+          path="/dashboard/create-budget"
+          exact
+          render={(props) => <NewBudget {...props} />}
+        />
+
+        <Route
+          path="/dashboard/budgets/:id"
+          exact
+          render={(props) => <SingleBudget {...props} />}
+        />
       </Switch>
     );
   } else {

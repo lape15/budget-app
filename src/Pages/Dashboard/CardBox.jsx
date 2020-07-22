@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import EditBudget from "./EditBudget";
 import { makeAuthenticatedApiCall } from "../Api.js";
+import { Link } from "react-router-dom";
 
 const CardBox = ({ item, setBudgets }) => {
   const [edit, setEdit] = useState(true);
@@ -16,7 +17,7 @@ const CardBox = ({ item, setBudgets }) => {
   };
 
   return (
-    <div className="item" key={item.id}>
+    <Link className="item" key={item.id} to={`/dashboard/budgets/${item.id}`}>
       {edit ? (
         <>
           <i
@@ -80,7 +81,7 @@ const CardBox = ({ item, setBudgets }) => {
           setBudgets={setBudgets}
         />
       )}
-    </div>
+    </Link>
   );
 };
 
