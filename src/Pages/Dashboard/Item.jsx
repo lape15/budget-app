@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import EditItem from "./EditItem";
+import { makeAuthenticatedApiCall } from "../Api.js";
 
 const Item = ({ item, id, setBudget }) => {
   const [edit, setEdit] = useState(false);
@@ -8,21 +9,41 @@ const Item = ({ item, id, setBudget }) => {
     setEdit(!edit);
   };
 
+  const handleItemDelete = (itemId) => {
+    let responses = makeAuthenticatedApiCall(
+      "delete",
+      `budget_memberships/${id}`,
+      {
+        bud_mem_id: itemId,
+      }
+    );
+    responses.then((response) => {
+      setBudget(response.data.payload);
+    });
+  };
   return (
     <div key={item.item_id} className="item">
-      <div className="desc">
+      <div className="descs">
         <div className="value">{item.name}</div>
       </div>
-      <div className="desc">
+      <div className="descs">
         <div className="value"> {item.budgetedCost}</div>
       </div>
-      <div className="desc">
+      <div className="descs">
         <div className="value"> {item.actualCost}</div>
       </div>
-      <div className="desc">
+      <div className="descs">
         <div className="value">{!item.executed ? "false" : "true"}</div>
       </div>
-      <i className="fas fa-edit edit" onClick={handleEdit}></i>
+      <div className="icons">
+        <div className="value">
+          <i className="fas fa-edit edit" onClick={handleEdit}></i>
+          <i
+            className="fas fa-trash"
+            onClick={() => handleItemDelete(item.bud_mem_id)}
+          ></i>
+        </div>
+      </div>
       {edit ? (
         <EditItem
           id={id}

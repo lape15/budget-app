@@ -70,7 +70,7 @@ const SingleBudget = (props) => {
 
           {budget.items.length > 0 ? (
             <div className="items">
-              <div className="title">
+              <div className="titles">
                 <div className="w-24"> Item</div>
                 <div className="w-24"> Budget</div>
                 <div className="w-24"> Cost</div>
