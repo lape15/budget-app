@@ -17,7 +17,7 @@ const CardBox = ({ item, setBudgets }) => {
   };
 
   return (
-    <Link className="item" key={item.id} to={`/dashboard/budgets/${item.id}`}>
+    <div className="item" key={item.id}>
       {edit ? (
         <>
           <i
@@ -32,6 +32,9 @@ const CardBox = ({ item, setBudgets }) => {
       {edit ? (
         <>
           {" "}
+          <Link to={`/dashboard/budgets/${item.id}`} className="links">
+            View
+          </Link>
           <div className="desc">
             <div className="value b">{item.name}</div>
           </div>
@@ -81,7 +84,7 @@ const CardBox = ({ item, setBudgets }) => {
           setBudgets={setBudgets}
         />
       )}
-    </Link>
+    </div>
   );
 };
 

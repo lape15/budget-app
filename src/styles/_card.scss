@@ -234,6 +234,7 @@ $bigScreen: 1440px;
           transform: translateX(-7px);
         }
       }
+
       .desc {
         width: 25%;
 
@@ -266,4 +267,17 @@ $bigScreen: 1440px;
       transform: scaleY(1.2);
     }
   }
+}
+.links {
+  text-decoration: none;
+  color: #158a9e;
+  font-weight: 700;
+  cursor: pointer;
+  @include mobile {
+    text-align: left;
+  }
+}
+
+.links:hover {
+  color: #f9b500;
 }
