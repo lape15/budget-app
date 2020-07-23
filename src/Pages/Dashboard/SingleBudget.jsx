@@ -3,6 +3,8 @@ import { makeAuthenticatedApiCall } from "../Api.js";
 import Loader from "./Loader";
 import AddItem from "./AddItem";
 
+import Item from "./Item";
+
 const SingleBudget = (props) => {
   const {
     match: {
@@ -12,7 +14,6 @@ const SingleBudget = (props) => {
   const [budget, setBudget] = useState(null);
   const [loading, setLoading] = useState(false);
   const [toggleItem, setToggleItem] = useState(false);
-  const [edit, setEdit] = useState(false);
 
   const handleToggleItem = () => {
     setToggleItem(!toggleItem);
@@ -39,9 +40,6 @@ const SingleBudget = (props) => {
     };
   }, []);
 
-  const handleEdit = () => {
-    setEdit(!edit);
-  };
   return (
     <div className="container">
       {loading ? <Loader /> : null}
@@ -73,27 +71,19 @@ const SingleBudget = (props) => {
           {budget.items.length > 0 ? (
             <div className="items">
               <div className="title">
-                <div className="w-30"> Item</div>
-                <div className="w-30"> Budget</div>
-                <div className="w-30"> Executed</div>
+                <div className="w-24"> Item</div>
+                <div className="w-24"> Budget</div>
+                <div className="w-24"> Cost</div>
+                <div className="w-24"> Executed</div>
               </div>
               {budget.items.map((item) => {
                 return (
-                  <div key={item.item_id} className="item">
-                    <div className="desc">
-                      <div className="value">{item.name}</div>
-                    </div>
-                    <div className="desc">
-                      <div className="value"> {item.budgetedCost}</div>
-                    </div>
-                    <div className="desc">
-                      <div className="value">
-                        <input type="checkbox" />
-                      </div>
-                    </div>
-
-                    <i className="fas fa-edit edit"></i>
-                  </div>
+                  <Item
+                    item={item}
+                    key={item.item_id}
+                    id={id}
+                    setBudget={setBudget}
+                  />
                 );
               })}
             </div>

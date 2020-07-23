@@ -188,6 +188,34 @@ $bigScreen: 1440px;
           }
         }
       }
+
+      .w-100-1 {
+        width: 100%;
+        position: relative;
+        margin-bottom: 20px;
+
+        text-align: left;
+
+        label {
+          font-family: "Roboto", sans-serif;
+          font-size: 12px;
+          letter-spacing: 1px;
+          display: block;
+          padding: 5px 8px;
+          margin-bottom: 5px;
+          text-align: left;
+          margin-right: 4px;
+          color: #f9b500;
+
+          input {
+            border: 1px solid #158a9e;
+            margin-left: 5px;
+            padding: 5px;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
       @include ipad() {
         width: 69%;
       }
