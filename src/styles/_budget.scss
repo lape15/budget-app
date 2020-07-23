@@ -157,9 +157,9 @@ $bigScreen: 1440px;
           text-align: center;
 
           @include ipad() {
-            text-align: left;
             width: 20%;
             padding: 2px;
+            margin-right: 1px;
           }
         }
 
@@ -213,15 +213,15 @@ $bigScreen: 1440px;
               color: #158a9e;
               margin-left: 5px;
               &.fa-trash {
-                margin-left: 9px;
+                margin-left: 2px;
                 color: #f9b500;
                 @include ipad() {
-                  margin-left: 5px;
+                  margin-left: 2px;
                   margin-top: 5px;
                 }
               }
               @include ipad() {
-                margin-left: 5px;
+                margin-left: 2px;
                 margin-bottom: 8px;
               }
             }
