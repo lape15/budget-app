@@ -268,16 +268,27 @@ $bigScreen: 1440px;
     }
   }
 }
-.links {
-  text-decoration: none;
-  color: #158a9e;
-  font-weight: 700;
-  cursor: pointer;
-  @include mobile {
-    text-align: left;
+.links-box {
+  .links {
+    text-decoration: underline #158a9e;
+    color: #f9b500;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.1s all ease;
+    @include ipad() {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
   }
-}
 
-.links:hover {
-  color: #f9b500;
+  .links:hover {
+    color: #158a9e;
+    text-decoration: underline #f9b500;
+  }
+  @include ipad() {
+    height: 15px;
+    position: relative;
+    padding: 2px;
+  }
 }

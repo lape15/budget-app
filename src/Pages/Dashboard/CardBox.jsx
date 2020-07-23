@@ -31,10 +31,11 @@ const CardBox = ({ item, setBudgets }) => {
       )}
       {edit ? (
         <>
-          {" "}
-          <Link to={`/dashboard/budgets/${item.id}`} className="links">
-            View
-          </Link>
+          <div className="links-box">
+            <Link to={`/dashboard/budgets/${item.id}`} className="links">
+              View
+            </Link>
+          </div>
           <div className="desc">
             <div className="value b">{item.name}</div>
           </div>
