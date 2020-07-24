@@ -23,7 +23,6 @@ const NewBudget = (props) => {
 
     onSubmit: (values) => {
       const { name, income, budgeted_cost } = values;
-      console.log(values);
       setLoading(true);
       const responses = makeAuthenticatedApiCall("post", "budgets", {
         name,
