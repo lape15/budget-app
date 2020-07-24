@@ -75,7 +75,31 @@ $bigScreen: 1440px;
       margin-left: 5px;
       margin-right: 5px;
       transform-origin: center;
-      text-decoration: none;
+
+      .links-box {
+        .links {
+          color: #f9b500;
+          font-weight: 700;
+          cursor: pointer;
+          transition: 0.1s all ease;
+          text-decoration: none;
+          @include ipad() {
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+
+        .links:hover {
+          color: #158a9e;
+          border: 2px solid red;
+        }
+        @include ipad() {
+          height: 15px;
+          position: relative;
+          padding: 2px;
+        }
+      }
 
       .fas {
         color: #158a9e;
@@ -221,6 +245,32 @@ $bigScreen: 1440px;
       transition: all 0.3s;
       text-decoration: none;
 
+      .links-box {
+        display: none;
+        width: 8%;
+        .links {
+          color: #f9b500;
+          font-weight: 700;
+          cursor: pointer;
+          transition: 0.1s all ease;
+          text-decoration: none;
+          @include ipad() {
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+
+        .links:hover {
+          color: #158a9e;
+        }
+        @include ipad() {
+          height: 15px;
+          position: relative;
+          padding: 2px;
+        }
+      }
+
       .fas {
         color: #f9b500;
         position: absolute;
@@ -266,29 +316,5 @@ $bigScreen: 1440px;
     .item:hover {
       transform: scaleY(1.2);
     }
-  }
-}
-.links-box {
-  .links {
-    text-decoration: underline #158a9e;
-    color: #f9b500;
-    font-weight: 700;
-    cursor: pointer;
-    transition: 0.1s all ease;
-    @include ipad() {
-      position: absolute;
-      top: 0;
-      left: 0;
-    }
-  }
-
-  .links:hover {
-    color: #158a9e;
-    text-decoration: underline #f9b500;
-  }
-  @include ipad() {
-    height: 15px;
-    position: relative;
-    padding: 2px;
   }
 }

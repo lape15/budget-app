@@ -26,7 +26,6 @@ const EditItem = ({ handleToggleItem, id, setBudget, handleEdit, item }) => {
     const responses = makeAuthenticatedApiCall(
       "put",
       `budget_memberships/${id}`,
-
       editItem
     );
 

@@ -72,8 +72,8 @@ const SingleBudget = (props) => {
             <div className="items">
               <div className="titles">
                 <div className="w-24"> Item</div>
-                <div className="w-24"> Budget</div>
-                <div className="w-24"> Cost</div>
+                <div className="w-24"> Budget Cost</div>
+                <div className="w-24">Actual Cost</div>
                 <div className="w-24"> Executed</div>
               </div>
               {budget.items.map((item) => {

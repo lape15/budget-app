@@ -57,7 +57,7 @@ const CardBox = ({ item, setBudgets }) => {
             {" "}
             <div className="value">
               {" "}
-              <span>Budget - </span>
+              <span>Budgeted Cost - </span>
               {item.budgetedCost}
             </div>
           </div>

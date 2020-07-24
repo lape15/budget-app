@@ -11,20 +11,24 @@ const NewBudget = (props) => {
     initialValues: {
       name: "",
       income: "",
+      budgeted_cost: "",
     },
 
     validationSchema: Yup.object({
       name: Yup.string().required("Cannot be blank"),
 
       income: Yup.number().required("Cannot be blank"),
+      budgeted_cost: Yup.number().required("Cannot be blank"),
     }),
 
     onSubmit: (values) => {
-      const { name, income } = values;
+      const { name, income, budgeted_cost } = values;
+      console.log(values);
       setLoading(true);
       const responses = makeAuthenticatedApiCall("post", "budgets", {
         name,
         income,
+        budgeted_cost,
       });
 
       responses
@@ -98,6 +102,31 @@ const NewBudget = (props) => {
               </span>
             ) : null}
           </div>
+
+          <div className="w-100">
+            <label className={`${formik.values.budgeted_cost ? "shrink" : ""}`}>
+              Budgeted Cost
+            </label>
+            <input
+              type="number"
+              name="budgeted_cost"
+              {...formik.getFieldProps("budgeted_cost")}
+              className={`${
+                formik.values.budgeted_cost
+                  ? "border-green"
+                  : formik.touched.budgeted_cost && formik.errors.budget_cost
+                  ? "border-red"
+                  : ""
+              }`}
+            />
+            {formik.touched.budgeted_cost && formik.errors.budgeted_cost ? (
+              <span className="error">
+                <i className="fas fa-times"></i>
+                {formik.errors.budgeted_cost}
+              </span>
+            ) : null}
+          </div>
+
           <div className="w-100">
             <button type="submit" disabled={loading} className="btn1">
               Create budget {loading && <i className="fas fa-spinner"></i>}
