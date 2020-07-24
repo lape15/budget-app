@@ -113,7 +113,7 @@ const NewBudget = (props) => {
               className={`${
                 formik.values.budgeted_cost
                   ? "border-green"
-                  : formik.touched.budgeted_cost && formik.errors.budget_cost
+                  : formik.touched.budgeted_cost && formik.errors.budgeted_cost
                   ? "border-red"
                   : ""
               }`}
