@@ -79,7 +79,7 @@ $bigScreen: 1440px;
       .links-box {
         .links {
           color: #f9b500;
-          font-weight: 700;
+          font-weight: 500;
           cursor: pointer;
           transition: 0.1s all ease;
           text-decoration: none;
@@ -92,7 +92,6 @@ $bigScreen: 1440px;
 
         .links:hover {
           color: #158a9e;
-          border: 2px solid red;
         }
         @include ipad() {
           height: 15px;

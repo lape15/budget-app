@@ -21,7 +21,6 @@ const Budgets = () => {
     return () => {
       setLoading(false);
       setBudgets([]);
-      console.log("Clean up");
     };
   }, []);
 

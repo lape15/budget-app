@@ -34,7 +34,6 @@ const SingleBudget = (props) => {
         console.log({ error });
       });
     return () => {
-      console.log("done");
       setBudget(null);
       setLoading(false);
     };
