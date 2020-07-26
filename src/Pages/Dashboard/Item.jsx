@@ -21,16 +21,17 @@ const Item = ({ item, id, setBudget }) => {
       setBudget(response.data.payload);
     });
   };
+
   return (
     <div key={item.item_id} className="item">
       <div className="descs">
         <div className="value">{item.name}</div>
       </div>
       <div className="descs">
-        <div className="value"> {item.budgetedCost}</div>
+        <div className="value"> {item.budgetedCost.toLocaleString("en")}</div>
       </div>
       <div className="descs">
-        <div className="value"> {item.actualCost}</div>
+        <div className="value"> {item.actualCost.toLocaleString("en")}</div>
       </div>
       <div className="descs">
         <div className="value">{!item.executed ? "false" : "true"}</div>

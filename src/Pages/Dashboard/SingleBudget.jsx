@@ -52,7 +52,9 @@ const SingleBudget = (props) => {
           </div>
           <div className="desc">
             <div className="title">Income</div>
-            <div className="value">{budget.budget.income}</div>
+            <div className="value">
+              {budget.budget.income.toLocaleString("en")}
+            </div>
           </div>
           <div className="desc">
             <div className="title">Created</div>

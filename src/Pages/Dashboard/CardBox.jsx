@@ -43,14 +43,14 @@ const CardBox = ({ item, setBudgets }) => {
             <div className="value">
               {" "}
               <span>Income - </span>
-              {item.income}
+              {item.income.toLocaleString("en")}
             </div>
           </div>
           <div className="desc">
             <div className="value">
               {" "}
               <span>Actual cost - </span>
-              {item.actualCost}
+              {item.actualCost.toLocaleString("en")}
             </div>
           </div>
           <div className="desc">
@@ -58,7 +58,7 @@ const CardBox = ({ item, setBudgets }) => {
             <div className="value">
               {" "}
               <span>Budgeted Cost - </span>
-              {item.budgetedCost}
+              {item.budgetedCost.toLocaleString("en")}
             </div>
           </div>
           <div className="desc">
