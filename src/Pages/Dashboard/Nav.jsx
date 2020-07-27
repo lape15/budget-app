@@ -52,7 +52,10 @@ const Nav = (props) => {
   return (
     <nav className={`nav ${switchNavClass()}`}>
       <div className="left">
-        <img src={logo} alt="BudgetIt logo" />
+        <NavLink to="/dashboard" className="link">
+          {" "}
+          <img src={logo} alt="BudgetIt logo" />
+        </NavLink>
       </div>
       <div className="right">
         {!user ? (
