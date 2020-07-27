@@ -35,7 +35,6 @@ $bigScreen: 1440px;
     right: 0;
     left: 0;
     z-index: 80;
-
     height: 100%;
     display: flex;
     justify-content: center;
@@ -219,6 +218,10 @@ $bigScreen: 1440px;
       @include ipad() {
         width: 69%;
       }
+    }
+    @include ipad() {
+      min-height: 100%;
+      min-width: 100%;
     }
   }
 }
