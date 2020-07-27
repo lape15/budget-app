@@ -69,12 +69,36 @@ $bigScreen: 1440px;
       background-color: #fff;
       padding: 10px 15px;
       height: 230px;
-      margin-top: 20px;
+      margin-top: 25px;
       transition: transform 0.3s;
       cursor: pointer;
       margin-left: 5px;
       margin-right: 5px;
       transform-origin: center;
+
+      .links-box {
+        .links {
+          color: #f9b500;
+          font-weight: 500;
+          cursor: pointer;
+          transition: 0.1s all ease;
+          text-decoration: none;
+          @include ipad() {
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+
+        .links:hover {
+          color: #158a9e;
+        }
+        @include ipad() {
+          height: 15px;
+          position: relative;
+          padding: 2px;
+        }
+      }
 
       .fas {
         color: #158a9e;
@@ -218,6 +242,33 @@ $bigScreen: 1440px;
       cursor: pointer;
       display: inline-flex;
       transition: all 0.3s;
+      text-decoration: none;
+
+      .links-box {
+        display: none;
+        width: 8%;
+        .links {
+          color: #f9b500;
+          font-weight: 700;
+          cursor: pointer;
+          transition: 0.1s all ease;
+          text-decoration: none;
+          @include ipad() {
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+        }
+
+        .links:hover {
+          color: #158a9e;
+        }
+        @include ipad() {
+          height: 15px;
+          position: relative;
+          padding: 2px;
+        }
+      }
 
       .fas {
         color: #f9b500;
@@ -232,6 +283,7 @@ $bigScreen: 1440px;
           transform: translateX(-7px);
         }
       }
+
       .desc {
         width: 25%;
 

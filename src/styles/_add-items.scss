@@ -1,0 +1,231 @@
+$mobile: 300px;
+$ipad: 768px;
+$bigScreen: 1440px;
+
+@mixin big-screen {
+  @media (min-width: #{$bigScreen}) {
+    @content;
+  }
+}
+@mixin ipad {
+  @media (max-width: #{$ipad}) {
+    @content;
+  }
+}
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin firefox-only {
+  @at-root {
+    @-moz-document url-prefix() {
+      & {
+        @content;
+      }
+    }
+  }
+}
+
+.container {
+  .add-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 80;
+
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 5px 15px -10px rgba(0, 0, 0, 0.25);
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: saturate(180%) blur(10px);
+    -webkit-backdrop-filter: saturate(180%) blur(10px);
+    cursor: pointer;
+
+    .btn-box {
+      float: right;
+      justify-content: flex-end;
+      position: absolute;
+      right: 0;
+      top: 0;
+      padding: 5px 10px;
+
+      button {
+        background: #f9b500;
+        color: #fff;
+        border-radius: 2px;
+        margin-bottom: 20px;
+        margin-top: 20px;
+        padding: 10px;
+        border: none;
+        outline: none;
+        letter-spacing: 1px;
+        border: 1px solid #f9b500;
+        font-family: "Roboto", sans-serif;
+        cursor: pointer;
+        position: relative;
+        transition: color 0.4s linear;
+
+        @include ipad() {
+          padding: 5px;
+        }
+      }
+
+      @include ipad() {
+        padding: 5px;
+        top: -17px;
+      }
+    }
+
+    @include firefox-only() {
+      background: #f2f2f2;
+      backdrop-filter: saturate(180%) blur(10px);
+      backdrop-filter: blur(10px);
+    }
+
+    form {
+      display: block;
+      padding: 25px 15px;
+      text-align: center;
+      width: 27%;
+      background-color: #fff;
+      position: relative;
+
+      .w-100 {
+        width: 100%;
+        position: relative;
+        margin-bottom: 20px;
+
+        &.error-box {
+          span {
+            color: red;
+            font-family: "Roboto", sans-serif;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            font-weight: 500;
+          }
+        }
+
+        label {
+          font-family: "Roboto", sans-serif;
+          font-size: 14px;
+          letter-spacing: 1px;
+          display: block;
+          padding: 5px;
+          margin-bottom: 5px;
+          text-align: left;
+          position: absolute;
+          transform: translateY(2px);
+          color: grey;
+
+          &.shrink {
+            transform: translateY(-15px);
+            font-size: 10px;
+            color: #f9b500;
+          }
+        }
+
+        input {
+          border: 1px solid grey;
+          background: #fff;
+          padding: 15px 5px;
+          height: 25px;
+          width: 100%;
+          box-sizing: border-box;
+          outline: none;
+          transition: border 0.6s;
+          font-family: "Roboto", sans-serif;
+          letter-spacing: 1px;
+          border-top: none;
+          border-right: none;
+          border-left: none;
+          -webkit-appearance: none;
+
+          &.border-green {
+            border-bottom: 1px solid #158a9e;
+          }
+          &.border-red {
+            border-bottom: 1px solid red;
+          }
+        }
+
+        button {
+          background: #158a9e;
+          color: #000;
+          border-radius: 2px;
+          margin-bottom: 20px;
+          margin-top: 20px;
+          margin-left: 5px;
+          padding: 10px;
+          border: none;
+          outline: none;
+          height: 35px;
+          letter-spacing: 1px;
+          border: 1px solid #158a9e;
+          font-family: "Roboto", sans-serif;
+          width: max-content;
+          cursor: pointer;
+          position: relative;
+          transition: color 0.4s linear;
+
+          .fas {
+            margin-left: 5px;
+            font-size: 16px;
+            animation: spin 2s linear infinite;
+            color: #000;
+          }
+          &.cancel {
+            background-color: #f9b500;
+            margin-right: 3px;
+            border: 1px solid #f9b500;
+          }
+          @include ipad() {
+            margin-top: 2px;
+          }
+        }
+      }
+
+      .w-100-1 {
+        width: 100%;
+        position: relative;
+        margin-bottom: 20px;
+
+        text-align: left;
+
+        label {
+          font-family: "Roboto", sans-serif;
+          font-size: 12px;
+          letter-spacing: 1px;
+          display: block;
+          padding: 5px 8px;
+          margin-bottom: 5px;
+          text-align: left;
+          margin-right: 4px;
+          color: #f9b500;
+
+          input {
+            border: 1px solid #158a9e;
+            margin-left: 5px;
+            padding: 5px;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+      @include ipad() {
+        width: 69%;
+      }
+    }
+  }
+}
+
+@-moz-document url-prefix() {
+  .add-box {
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: url(../assets/budget-it.png) saturate(180%) blur(10px);
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import EditBudget from "./EditBudget";
 import { makeAuthenticatedApiCall } from "../Api.js";
+import { Link } from "react-router-dom";
 
 const CardBox = ({ item, setBudgets }) => {
   const [edit, setEdit] = useState(true);
@@ -30,7 +31,11 @@ const CardBox = ({ item, setBudgets }) => {
       )}
       {edit ? (
         <>
-          {" "}
+          <div className="links-box">
+            <Link to={`/dashboard/budgets/${item.id}`} className="links">
+              View
+            </Link>
+          </div>
           <div className="desc">
             <div className="value b">{item.name}</div>
           </div>
@@ -38,22 +43,22 @@ const CardBox = ({ item, setBudgets }) => {
             <div className="value">
               {" "}
               <span>Income - </span>
-              {item.income}
+              {item.income.toLocaleString("en")}
             </div>
           </div>
           <div className="desc">
             <div className="value">
               {" "}
               <span>Actual cost - </span>
-              {item.actualCost}
+              {item.actualCost.toLocaleString("en")}
             </div>
           </div>
           <div className="desc">
             {" "}
             <div className="value">
               {" "}
-              <span>Budget - </span>
-              {item.budgetedCost}
+              <span>Budgeted Cost - </span>
+              {item.budgetedCost.toLocaleString("en")}
             </div>
           </div>
           <div className="desc">
