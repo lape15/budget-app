@@ -75,28 +75,6 @@
           }
         }
 
-        button::before {
-          content: "Create budget";
-          position: absolute;
-          top: -1px;
-          left: -1px;
-          width: 100%;
-          color: #fff;
-          letter-spacing: 1px;
-          border: 1px solid #f9b500;
-          font-family: "Roboto", sans-serif;
-          background: #f9b500;
-          border: 1px solid #f9b500;
-          z-index: 1;
-          transition: all 0.5s;
-          transform-origin: 0 0;
-          border-radius: 2px;
-          transition-timing-function: cubic-bezier(0.5, 1.6, 0.4, 0.7);
-          padding: 9px 2px;
-          display: block;
-          height: 15px;
-        }
-
         button {
           background: #158a9e;
           color: #000;
@@ -120,14 +98,6 @@
             animation: spin 2s linear infinite;
           }
         }
-
-        .btn1::before {
-          transform: scaleX(0);
-        }
-      }
-
-      .btn1:hover::before {
-        transform: scaleX(1);
       }
     }
   }
