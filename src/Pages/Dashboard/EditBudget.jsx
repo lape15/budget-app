@@ -1,12 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useFormik } from "formik";
-
+import { BudgetsContext } from "../../contexts/AuthReducer";
 import { makeAuthenticatedApiCall } from "../Api.js";
 
 const EditBudget = (props) => {
+  const { dispatch } = useContext(BudgetsContext);
   const [loading, setLoading] = useState(false);
-
-  const { setBudgets } = props;
 
   const formik = useFormik({
     initialValues: {
@@ -25,7 +24,10 @@ const EditBudget = (props) => {
       });
       responses
         .then((response) => {
-          setBudgets(response.data.payload.budgets);
+          dispatch({
+            type: "FETCH_BUDGETS",
+            payload: response.data.payload.budgets,
+          });
           setLoading(false);
           props.handleEdit();
         })

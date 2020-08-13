@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import CardBox from "./CardBox";
 
-const CardContainer = ({ items, setBudgets }) => {
+const CardContainer = ({ items }) => {
   const [view, setView] = useState(true);
   const handleView = () => {
     setView(!view);
@@ -30,7 +30,7 @@ const CardContainer = ({ items, setBudgets }) => {
         </div>
 
         {items.map((item, index) => {
-          return <CardBox item={item} key={index} setBudgets={setBudgets} />;
+          return <CardBox item={item} key={index} />;
         })}
       </div>
     </div>

@@ -1,35 +1,42 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 import { makeAuthenticatedApiCall } from "../Api.js";
 import Loader from "./Loader";
 import { Link } from "react-router-dom";
 import CardConatiner from "./CardContainer";
+import { BudgetsContext } from "../../contexts/AuthReducer";
 const Budgets = () => {
-  const [budgets, setBudgets] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { dispatch, state } = useContext(BudgetsContext);
   useEffect(() => {
-    setLoading(true);
+    dispatch({
+      type: "FETCH_BUDGETS_REQUESTS",
+    });
     const responses = makeAuthenticatedApiCall("get", "budgets");
     responses
       .then((response) => {
-        setLoading(false);
-        setBudgets(response.data.payload.budgets);
+        dispatch({
+          type: "FETCH_BUDGETS",
+          payload: response.data.payload.budgets,
+        });
       })
       .catch((error) => {
         console.log(error);
+        dispatch({
+          type: "FETCH_BUDGETS_FAILURE",
+        });
       });
 
-    return () => {
-      setLoading(false);
-      setBudgets([]);
-    };
+    // return () => {
+    //   setLoading(false);
+    //   setBudgets([]);
+    // };
   }, []);
-
+  const { budgets, loading } = state;
   return (
     <div className="budgets">
       {loading ? (
         <Loader />
       ) : budgets.length > 0 ? (
-        <CardConatiner items={budgets} setBudgets={setBudgets} />
+        <CardConatiner items={budgets} />
       ) : (
         <div className="message-box">
           You currently have no budget{" "}

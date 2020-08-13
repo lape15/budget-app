@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import EditBudget from "./EditBudget";
 import { makeAuthenticatedApiCall } from "../Api.js";
 import { Link } from "react-router-dom";
+import { BudgetsContext } from "../../contexts/AuthReducer";
 
 const CardBox = ({ item, setBudgets }) => {
+  const { dispatch } = useContext(BudgetsContext);
   const [edit, setEdit] = useState(true);
 
   const handleEdit = () => {
@@ -12,7 +14,10 @@ const CardBox = ({ item, setBudgets }) => {
   const deleteBudget = (id) => {
     let responses = makeAuthenticatedApiCall("delete", `budgets/${id}`);
     responses.then((response) => {
-      setBudgets(response.data.payload.budgets);
+      dispatch({
+        type: "FETCH_BUDGETS",
+        payload: response.data.payload.budgets,
+      });
     });
   };
 
@@ -82,7 +87,6 @@ const CardBox = ({ item, setBudgets }) => {
           income={item.income}
           id={item.id}
           handleEdit={handleEdit}
-          setBudgets={setBudgets}
         />
       )}
     </div>
