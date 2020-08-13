@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import EditItem from "./EditItem";
+import { BudgetsContext } from "../../contexts/AuthReducer";
 import { makeAuthenticatedApiCall } from "../Api.js";
 
-const Item = ({ item, id, setBudget }) => {
+const Item = ({ item, id }) => {
   const [edit, setEdit] = useState(false);
+  const { dispatch } = useContext(BudgetsContext);
 
   const handleEdit = () => {
     setEdit(!edit);
@@ -18,7 +20,10 @@ const Item = ({ item, id, setBudget }) => {
       }
     );
     responses.then((response) => {
-      setBudget(response.data.payload);
+      dispatch({
+        type: "FETCH_SINGLE_BUDGET",
+        payload: response.data.payload,
+      });
     });
   };
 
@@ -45,14 +50,7 @@ const Item = ({ item, id, setBudget }) => {
           ></i>
         </div>
       </div>
-      {edit ? (
-        <EditItem
-          id={id}
-          setBudget={setBudget}
-          item={item}
-          handleEdit={handleEdit}
-        />
-      ) : null}
+      {edit ? <EditItem id={id} item={item} handleEdit={handleEdit} /> : null}
     </div>
   );
 };

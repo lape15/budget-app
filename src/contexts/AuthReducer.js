@@ -4,6 +4,7 @@ export const BudgetsContext = createContext();
 const initialState = {
   loading: false,
   budgets: [],
+  budget: null,
 };
 
 const reducer = (state, action) => {
@@ -23,6 +24,13 @@ const reducer = (state, action) => {
     case "FETCH_BUDGETS_FAILURE":
       return {
         ...state,
+      };
+
+    case "FETCH_SINGLE_BUDGET":
+      return {
+        ...state,
+        loading: false,
+        budget: action.payload,
       };
     default:
       return initialState;

@@ -24,11 +24,6 @@ const Budgets = () => {
           type: "FETCH_BUDGETS_FAILURE",
         });
       });
-
-    // return () => {
-    //   setLoading(false);
-    //   setBudgets([]);
-    // };
   }, []);
   const { budgets, loading } = state;
   return (

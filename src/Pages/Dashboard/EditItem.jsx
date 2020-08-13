@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { makeAuthenticatedApiCall } from "../Api.js";
-
+import { BudgetsContext } from "../../contexts/AuthReducer";
 const EditItem = ({ handleToggleItem, id, setBudget, handleEdit, item }) => {
+  const { dispatch } = useContext(BudgetsContext);
   const [loading, setLoading] = useState(false);
 
   const [editItem, setEditItem] = useState({
@@ -32,7 +33,10 @@ const EditItem = ({ handleToggleItem, id, setBudget, handleEdit, item }) => {
     responses
       .then((response) => {
         setLoading(false);
-        setBudget(response.data.payload);
+        dispatch({
+          type: "FETCH_SINGLE_BUDGET",
+          payload: response.data.payload,
+        });
         handleEdit();
       })
       .catch((error) => {

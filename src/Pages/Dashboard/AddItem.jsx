@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { makeAuthenticatedApiCall } from "../Api.js";
+import { BudgetsContext } from "../../contexts/AuthReducer";
 
 const AddItem = ({ handleToggleItem, id, setBudget }) => {
+  const { dispatch } = useContext(BudgetsContext);
   const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
@@ -31,7 +33,10 @@ const AddItem = ({ handleToggleItem, id, setBudget }) => {
       responses
         .then((response) => {
           setLoading(false);
-          setBudget(response.data.payload);
+          dispatch({
+            type: "FETCH_SINGLE_BUDGET",
+            payload: response.data.payload,
+          });
           handleToggleItem();
         })
         .catch((error) => {

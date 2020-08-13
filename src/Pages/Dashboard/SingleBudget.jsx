@@ -1,18 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeAuthenticatedApiCall } from "../Api.js";
 import Loader from "./Loader";
 import AddItem from "./AddItem";
-
+import { BudgetsContext } from "../../contexts/AuthReducer";
 import Item from "./Item";
 
 const SingleBudget = (props) => {
+  const { dispatch, state } = useContext(BudgetsContext);
+
   const {
     match: {
       params: { id },
     },
   } = props;
-  const [budget, setBudget] = useState(null);
-  const [loading, setLoading] = useState(false);
+
   const [toggleItem, setToggleItem] = useState(false);
 
   const handleToggleItem = () => {
@@ -20,24 +21,30 @@ const SingleBudget = (props) => {
   };
 
   useEffect(() => {
-    setLoading(true);
+    dispatch({
+      type: "FETCH_BUDGETS_REQUESTS",
+    });
     const responses = makeAuthenticatedApiCall(
       "get",
       `budget_memberships/${id}`
     );
     responses
       .then((response) => {
-        setLoading(false);
-        setBudget(response.data.payload);
+        dispatch({
+          type: "FETCH_SINGLE_BUDGET",
+          payload: response.data.payload,
+        });
       })
       .catch((error) => {
         console.log({ error });
+        dispatch({
+          type: "FETCH_BUDGETS_FAILURE",
+        });
       });
-    return () => {
-      setBudget(null);
-      setLoading(false);
-    };
   }, []);
+
+  const { loading, budget } = state;
+  console.log(state.budget);
 
   return (
     <div className="container">
@@ -78,23 +85,12 @@ const SingleBudget = (props) => {
                 <div className="w-24"> Executed</div>
               </div>
               {budget.items.map((item) => {
-                return (
-                  <Item
-                    item={item}
-                    key={item.item_id}
-                    id={id}
-                    setBudget={setBudget}
-                  />
-                );
+                return <Item item={item} key={item.item_id} id={id} />;
               })}
             </div>
           ) : null}
           {toggleItem ? (
-            <AddItem
-              handleToggleItem={handleToggleItem}
-              id={id}
-              setBudget={setBudget}
-            />
+            <AddItem handleToggleItem={handleToggleItem} id={id} />
           ) : null}
         </div>
       ) : null}
