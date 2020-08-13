@@ -24,7 +24,7 @@ const Budgets = () => {
           type: "FETCH_BUDGETS_FAILURE",
         });
       });
-  }, []);
+  }, [dispatch]);
   const { budgets, loading } = state;
   return (
     <div className="budgets">

@@ -41,15 +41,15 @@ const SingleBudget = (props) => {
           type: "FETCH_BUDGETS_FAILURE",
         });
       });
-  }, []);
+  }, [dispatch, id]);
 
   const { loading, budget } = state;
-  console.log(state.budget);
 
   return (
     <div className="container">
-      {loading ? <Loader /> : null}
-      {budget ? (
+      {loading ? (
+        <Loader />
+      ) : budget ? (
         <div className="item-box">
           <div className="btn-box">
             <button onClick={handleToggleItem}>Add item</button>
